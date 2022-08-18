@@ -30,6 +30,9 @@ func protoFile(genpkg string, svc *expr.GRPCServiceExpr) *codegen.File {
 	svcName := data.Service.PathName
 	path := filepath.Join(codegen.Gendir, "grpc", svcName, pbPkgName, "goadesign_goagen_"+svcName+".proto")
 
+	additionalImports := svc.ServiceExpr.Meta["proto:import"]
+	additionalImports = append(additionalImports, expr.Root.API.Meta["proto:import"]...)
+
 	sections := []*codegen.SectionTemplate{
 		// header comments
 		{
@@ -47,7 +50,7 @@ func protoFile(genpkg string, svc *expr.GRPCServiceExpr) *codegen.File {
 			Data: map[string]interface{}{
 				"ProtoVersion": ProtoVersion,
 				"Pkg":          pkgName(svc, svcName),
-				"Imports":      data.ProtoImports,
+				"Imports":      append(additionalImports, data.ProtoImports...),
 			},
 		},
 		// service definition
