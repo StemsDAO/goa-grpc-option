@@ -127,9 +127,9 @@ type (
 		AllowEmptyValue bool `json:"allowEmptyValue,omitempty" yaml:"allowEmptyValue,omitempty"`
 		// Items describes the type of items in the array if type is "array".
 		Items *Items `json:"items,omitempty" yaml:"items,omitempty"`
-		// CollectionFormat determines the format of the array if type array is used.
+		// ListFormat determines the format of the array if type array is used.
 		// Possible values are csv, ssv, tsv, pipes and multi.
-		CollectionFormat string `json:"collectionFormat,omitempty" yaml:"collectionFormat,omitempty"`
+		ListFormat string `json:"listFormat,omitempty" yaml:"listFormat,omitempty"`
 		// Default declares the value of the parameter that the server will use if none is
 		// provided, for example a "count" to control the number of results per page might
 		// default to 100 if not supplied by the client in the request.
@@ -179,9 +179,9 @@ type (
 		Format string `json:"format,omitempty" yaml:"format,omitempty"`
 		// Items describes the type of items in the array if type is "array".
 		Items *Items `json:"items,omitempty" yaml:"items,omitempty"`
-		// CollectionFormat determines the format of the array if type array is used.
+		// ListFormat determines the format of the array if type array is used.
 		// Possible values are csv, ssv, tsv, pipes and multi.
-		CollectionFormat string `json:"collectionFormat,omitempty" yaml:"collectionFormat,omitempty"`
+		ListFormat string `json:"listFormat,omitempty" yaml:"listFormat,omitempty"`
 		// Default declares the value of the parameter that the server will use if none is
 		// provided, for example a "count" to control the number of results per page might
 		// default to 100 if not supplied by the client in the request.
@@ -242,9 +242,9 @@ type (
 		Format string `json:"format,omitempty" yaml:"format,omitempty"`
 		// Items describes the type of items in the array if type is "array".
 		Items *Items `json:"items,omitempty" yaml:"items,omitempty"`
-		// CollectionFormat determines the format of the array if type array is used.
+		// ListFormat determines the format of the array if type array is used.
 		// Possible values are csv, ssv, tsv, pipes and multi.
-		CollectionFormat string `json:"collectionFormat,omitempty" yaml:"collectionFormat,omitempty"`
+		ListFormat string `json:"listFormat,omitempty" yaml:"listFormat,omitempty"`
 		// Default declares the value of the parameter that the server will use if none is
 		// provided, for example a "count" to control the number of results per page might
 		// default to 100 if not supplied by the client in the request.

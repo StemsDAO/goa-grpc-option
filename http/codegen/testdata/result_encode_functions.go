@@ -657,19 +657,19 @@ func EncodeMethodBodyMultipleViewResponse(encoder func(context.Context, http.Res
 }
 `
 
-var ResultBodyCollectionMultipleViewsEncodeCode = `// EncodeMethodBodyCollectionResponse returns an encoder for responses returned
-// by the ServiceBodyCollection MethodBodyCollection endpoint.
-func EncodeMethodBodyCollectionResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
+var ResultBodyListMultipleViewsEncodeCode = `// EncodeMethodBodyListResponse returns an encoder for responses returned
+// by the ServiceBodyList MethodBodyList endpoint.
+func EncodeMethodBodyListResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
 	return func(ctx context.Context, w http.ResponseWriter, v interface{}) error {
-		res := v.(servicebodycollectionviews.ResulttypecollectionCollection)
+		res := v.(servicebodylistviews.ResulttypelistList)
 		w.Header().Set("goa-view", res.View)
 		enc := encoder(ctx, w)
 		var body interface{}
 		switch res.View {
 		case "default", "":
-			body = NewResulttypecollectionResponseCollection(res.Projected)
+			body = NewResulttypelistResponseList(res.Projected)
 		case "tiny":
-			body = NewResulttypecollectionResponseTinyCollection(res.Projected)
+			body = NewResulttypelistResponseTinyList(res.Projected)
 		}
 		w.WriteHeader(http.StatusOK)
 		return enc.Encode(body)
@@ -677,14 +677,14 @@ func EncodeMethodBodyCollectionResponse(encoder func(context.Context, http.Respo
 }
 `
 
-var ResultBodyCollectionExplicitViewEncodeCode = `// EncodeMethodBodyCollectionExplicitViewResponse returns an encoder for
-// responses returned by the ServiceBodyCollectionExplicitView
-// MethodBodyCollectionExplicitView endpoint.
-func EncodeMethodBodyCollectionExplicitViewResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
+var ResultBodyListExplicitViewEncodeCode = `// EncodeMethodBodyListExplicitViewResponse returns an encoder for
+// responses returned by the ServiceBodyListExplicitView
+// MethodBodyListExplicitView endpoint.
+func EncodeMethodBodyListExplicitViewResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
 	return func(ctx context.Context, w http.ResponseWriter, v interface{}) error {
-		res := v.(servicebodycollectionexplicitviewviews.ResulttypecollectionCollection)
+		res := v.(servicebodylistexplicitviewviews.ResulttypelistList)
 		enc := encoder(ctx, w)
-		body := NewResulttypecollectionResponseTinyCollection(res.Projected)
+		body := NewResulttypelistResponseTinyList(res.Projected)
 		w.WriteHeader(http.StatusOK)
 		return enc.Encode(body)
 	}
@@ -770,14 +770,14 @@ func EncodeMethodExplicitBodyUserResultMultipleViewResponse(encoder func(context
 }
 `
 
-var ExplicitBodyResultCollectionEncodeCode = `// EncodeMethodExplicitBodyResultCollectionResponse returns an encoder for
-// responses returned by the ServiceExplicitBodyResultCollection
-// MethodExplicitBodyResultCollection endpoint.
-func EncodeMethodExplicitBodyResultCollectionResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
+var ExplicitBodyResultListEncodeCode = `// EncodeMethodExplicitBodyResultListResponse returns an encoder for
+// responses returned by the ServiceExplicitBodyResultList
+// MethodExplicitBodyResultList endpoint.
+func EncodeMethodExplicitBodyResultListResponse(encoder func(context.Context, http.ResponseWriter) goahttp.Encoder) func(context.Context, http.ResponseWriter, interface{}) error {
 	return func(ctx context.Context, w http.ResponseWriter, v interface{}) error {
-		res, _ := v.(*serviceexplicitbodyresultcollection.MethodExplicitBodyResultCollectionResult)
+		res, _ := v.(*serviceexplicitbodyresultlist.MethodExplicitBodyResultListResult)
 		enc := encoder(ctx, w)
-		body := NewResulttypeCollection(res)
+		body := NewResulttypeList(res)
 		w.WriteHeader(http.StatusOK)
 		return enc.Encode(body)
 	}

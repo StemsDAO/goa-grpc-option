@@ -345,8 +345,8 @@ type (
 		// FullRef is the complete reference to the viewed result type
 		// (including views package name).
 		FullRef string
-		// IsCollection indicates whether the viewed result type is a collection.
-		IsCollection bool
+		// IsList indicates whether the viewed result type is a list.
+		IsList bool
 		// ViewName is the view name to use to render the result type. It is set
 		// only if the result type has at most one view.
 		ViewName string
@@ -1352,7 +1352,7 @@ func buildViewedResultType(att, projected *expr.AttributeExpr, viewspkg string, 
 			"ReturnVar":     "vres",
 			"Views":         views,
 			"ReturnTypeRef": vresref,
-			"IsCollection":  isarr,
+			"IsList":  isarr,
 			"TargetType":    scope.GoFullTypeName(att, viewspkg),
 			"InitName":      "new" + viewScope.GoTypeName(projected),
 		}
@@ -1414,7 +1414,7 @@ func buildViewedResultType(att, projected *expr.AttributeExpr, viewspkg string, 
 		Init:         init,
 		Views:        views,
 		Validate:     validate,
-		IsCollection: isarr,
+		IsList: isarr,
 		ViewName:     viewName,
 		ViewsPkg:     viewspkg,
 	}
@@ -1452,7 +1452,7 @@ func buildTypeInits(projected, att *expr.AttributeExpr, viewspkg string, scope, 
 	pobj := expr.AsObject(projected.Type)
 	parr := expr.AsArray(projected.Type)
 	if parr != nil {
-		// result type collection
+		// result type list
 		pobj = expr.AsObject(parr.ElemType.Type)
 	}
 
@@ -1544,7 +1544,7 @@ func buildProjections(projected, att *expr.AttributeExpr, viewspkg string, scope
 			pobj := expr.AsObject(projected.Type)
 			parr := expr.AsArray(projected.Type)
 			if parr != nil {
-				// result type collection
+				// result type list
 				pobj = expr.AsObject(parr.ElemType.Type)
 			}
 			walkViewAttrs(pobj, view, func(name string, att, _ *expr.AttributeExpr) {
@@ -1620,7 +1620,7 @@ func buildValidations(projected *expr.AttributeExpr, scope *codegen.NameScope) [
 				"Projected":    tname,
 				"ArgVar":       "result",
 				"Source":       "result",
-				"IsCollection": arr != nil,
+				"IsList": arr != nil,
 			}
 			var (
 				name string
@@ -1716,12 +1716,12 @@ func buildConstructorCode(src, tgt *expr.AttributeExpr, sourceVar, targetVar str
 	data := map[string]interface{}{
 		"ArgVar":       sourceVar,
 		"ReturnVar":    targetVar,
-		"IsCollection": arr != nil,
+		"IsList": arr != nil,
 		"TargetType":   targetCtx.Scope.Name(tgt, targetCtx.Pkg(tgt), targetCtx.Pointer, targetCtx.UseDefault),
 	}
 
 	if arr != nil {
-		// result type collection
+		// result type list
 		init := "new" + targetCtx.Scope.Name(arr.ElemType, "", targetCtx.Pointer, targetCtx.UseDefault)
 		if view != "" && view != expr.DefaultView {
 			init += codegen.Goify(view, true)
@@ -1805,7 +1805,7 @@ const (
 		{{- with (index .Views 0) }}
 			{{- if $.ToViewed -}}
 	p := {{ $.InitName }}{{ if ne .Name "default" }}{{ goify .Name true }}{{ end }}({{ $.ArgVar }})
-	return {{ if not $.IsCollection }}&{{ end }}{{ $.TargetType }}{Projected: p, View: {{ printf "%q" .Name }} }
+	return {{ if not $.IsList }}&{{ end }}{{ $.TargetType }}{Projected: p, View: {{ printf "%q" .Name }} }
  			{{- else -}}
 			return {{ $.InitName }}{{ if ne .Name "default" }}{{ goify .Name true }}{{ end }}({{ $.ArgVar }}.Projected)
 			{{- end }}
@@ -1817,7 +1817,7 @@ const (
 		case {{ printf "%q" .Name }}{{ if eq .Name "default" }}, ""{{ end }}:
 			{{- if $.ToViewed }}
 				p := {{ $.InitName }}{{ if ne .Name "default" }}{{ goify .Name true }}{{ end }}({{ $.ArgVar }})
-				{{ $.ReturnVar }} = {{ if not $.IsCollection }}&{{ end }}{{ $.TargetType }}{Projected: p, View: {{ printf "%q" .Name }} }
+				{{ $.ReturnVar }} = {{ if not $.IsList }}&{{ end }}{{ $.TargetType }}{Projected: p, View: {{ printf "%q" .Name }} }
 			{{- else }}
 				{{ $.ReturnVar }} = {{ $.InitName }}{{ if ne .Name "default" }}{{ goify .Name true }}{{ end }}({{ $.ArgVar }}.Projected)
 			{{- end }}
@@ -1825,7 +1825,7 @@ const (
 	}
 	return {{ .ReturnVar }}
 	{{- end }}
-{{- else if .IsCollection -}}
+{{- else if .IsList -}}
 	{{ .ReturnVar }} := make({{ .TargetType }}, len({{ .ArgVar }}))
 	for i, n := range {{ .ArgVar }} {
 		{{ .ReturnVar }}[i] = {{ .InitName }}(n)
@@ -1851,7 +1851,7 @@ default:
 	err = goa.InvalidEnumValueError("view", {{ .Source }}.View, []interface{}{ {{ range .Views }}{{ printf "%q" .Name }}, {{ end }} })
 }
 {{- else -}}
-	{{- if .IsCollection -}}
+	{{- if .IsList -}}
 for _, {{ $.Source }} := range {{ $.ArgVar }} {
 	if err2 := {{ .ValidateVar }}({{ $.Source }}); err2 != nil {
 		err = goa.MergeErrors(err, err2)

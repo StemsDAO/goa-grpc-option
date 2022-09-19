@@ -64,17 +64,17 @@ func ValidateResultTypeViewTiny(result *ResultTypeView) (err error) {
 }
 `
 
-const ResultCollectionMultipleViewsCode = `// ResultTypeCollection is the viewed result type that is projected based on a
+const ResultListMultipleViewsCode = `// ResultTypeList is the viewed result type that is projected based on a
 // view.
-type ResultTypeCollection struct {
+type ResultTypeList struct {
 	// Type to project
-	Projected ResultTypeCollectionView
+	Projected ResultTypeListView
 	// View to render
 	View string
 }
 
-// ResultTypeCollectionView is a type that runs validations on a projected type.
-type ResultTypeCollectionView []*ResultTypeView
+// ResultTypeListView is a type that runs validations on a projected type.
+type ResultTypeListView []*ResultTypeView
 
 // ResultTypeView is a type that runs validations on a projected type.
 type ResultTypeView struct {
@@ -83,9 +83,9 @@ type ResultTypeView struct {
 }
 
 var (
-	// ResultTypeCollectionMap is a map indexing the attribute names of
-	// ResultTypeCollection by view name.
-	ResultTypeCollectionMap = map[string][]string{
+	// ResultTypeListMap is a map indexing the attribute names of
+	// ResultTypeList by view name.
+	ResultTypeListMap = map[string][]string{
 		"default": {
 			"a",
 			"b",
@@ -107,23 +107,23 @@ var (
 	}
 )
 
-// ValidateResultTypeCollection runs the validations defined on the viewed
-// result type ResultTypeCollection.
-func ValidateResultTypeCollection(result ResultTypeCollection) (err error) {
+// ValidateResultTypeList runs the validations defined on the viewed
+// result type ResultTypeList.
+func ValidateResultTypeList(result ResultTypeList) (err error) {
 	switch result.View {
 	case "default", "":
-		err = ValidateResultTypeCollectionView(result.Projected)
+		err = ValidateResultTypeListView(result.Projected)
 	case "tiny":
-		err = ValidateResultTypeCollectionViewTiny(result.Projected)
+		err = ValidateResultTypeListViewTiny(result.Projected)
 	default:
 		err = goa.InvalidEnumValueError("view", result.View, []interface{}{"default", "tiny"})
 	}
 	return
 }
 
-// ValidateResultTypeCollectionView runs the validations defined on
-// ResultTypeCollectionView using the "default" view.
-func ValidateResultTypeCollectionView(result ResultTypeCollectionView) (err error) {
+// ValidateResultTypeListView runs the validations defined on
+// ResultTypeListView using the "default" view.
+func ValidateResultTypeListView(result ResultTypeListView) (err error) {
 	for _, item := range result {
 		if err2 := ValidateResultTypeView(item); err2 != nil {
 			err = goa.MergeErrors(err, err2)
@@ -132,9 +132,9 @@ func ValidateResultTypeCollectionView(result ResultTypeCollectionView) (err erro
 	return
 }
 
-// ValidateResultTypeCollectionViewTiny runs the validations defined on
-// ResultTypeCollectionView using the "tiny" view.
-func ValidateResultTypeCollectionViewTiny(result ResultTypeCollectionView) (err error) {
+// ValidateResultTypeListViewTiny runs the validations defined on
+// ResultTypeListView using the "tiny" view.
+func ValidateResultTypeListViewTiny(result ResultTypeListView) (err error) {
 	for _, item := range result {
 		if err2 := ValidateResultTypeViewTiny(item); err2 != nil {
 			err = goa.MergeErrors(err, err2)
@@ -548,7 +548,7 @@ func ValidateRTViewTiny(result *RTView) (err error) {
 }
 `
 
-const ResultWithRecursiveCollectionOfResultTypeCode = `// SomeRT is the viewed result type that is projected based on a view.
+const ResultWithRecursiveListOfResultTypeCode = `// SomeRT is the viewed result type that is projected based on a view.
 type SomeRT struct {
 	// Type to project
 	Projected *SomeRTView
@@ -566,20 +566,20 @@ type AnotherResult struct {
 
 // SomeRTView is a type that runs validations on a projected type.
 type SomeRTView struct {
-	A SomeRTCollectionView
+	A SomeRTListView
 }
 
-// SomeRTCollectionView is a type that runs validations on a projected type.
-type SomeRTCollectionView []*SomeRTView
+// SomeRTListView is a type that runs validations on a projected type.
+type SomeRTListView []*SomeRTView
 
 // AnotherResultView is a type that runs validations on a projected type.
 type AnotherResultView struct {
-	A AnotherResultCollectionView
+	A AnotherResultListView
 }
 
-// AnotherResultCollectionView is a type that runs validations on a projected
+// AnotherResultListView is a type that runs validations on a projected
 // type.
-type AnotherResultCollectionView []*AnotherResultView
+type AnotherResultListView []*AnotherResultView
 
 var (
 	// SomeRTMap is a map indexing the attribute names of SomeRT by view name.
@@ -598,9 +598,9 @@ var (
 			"a",
 		},
 	}
-	// SomeRTCollectionMap is a map indexing the attribute names of
-	// SomeRTCollection by view name.
-	SomeRTCollectionMap = map[string][]string{
+	// SomeRTListMap is a map indexing the attribute names of
+	// SomeRTList by view name.
+	SomeRTListMap = map[string][]string{
 		"default": {
 			"a",
 		},
@@ -608,9 +608,9 @@ var (
 			"a",
 		},
 	}
-	// AnotherResultCollectionMap is a map indexing the attribute names of
-	// AnotherResultCollection by view name.
-	AnotherResultCollectionMap = map[string][]string{
+	// AnotherResultListMap is a map indexing the attribute names of
+	// AnotherResultList by view name.
+	AnotherResultListMap = map[string][]string{
 		"default": {
 			"a",
 		},
@@ -647,7 +647,7 @@ func ValidateAnotherResult(result *AnotherResult) (err error) {
 func ValidateSomeRTView(result *SomeRTView) (err error) {
 
 	if result.A != nil {
-		if err2 := ValidateSomeRTCollectionViewTiny(result.A); err2 != nil {
+		if err2 := ValidateSomeRTListViewTiny(result.A); err2 != nil {
 			err = goa.MergeErrors(err, err2)
 		}
 	}
@@ -659,16 +659,16 @@ func ValidateSomeRTView(result *SomeRTView) (err error) {
 func ValidateSomeRTViewTiny(result *SomeRTView) (err error) {
 
 	if result.A != nil {
-		if err2 := ValidateSomeRTCollectionView(result.A); err2 != nil {
+		if err2 := ValidateSomeRTListView(result.A); err2 != nil {
 			err = goa.MergeErrors(err, err2)
 		}
 	}
 	return
 }
 
-// ValidateSomeRTCollectionView runs the validations defined on
-// SomeRTCollectionView using the "default" view.
-func ValidateSomeRTCollectionView(result SomeRTCollectionView) (err error) {
+// ValidateSomeRTListView runs the validations defined on
+// SomeRTListView using the "default" view.
+func ValidateSomeRTListView(result SomeRTListView) (err error) {
 	for _, item := range result {
 		if err2 := ValidateSomeRTView(item); err2 != nil {
 			err = goa.MergeErrors(err, err2)
@@ -677,9 +677,9 @@ func ValidateSomeRTCollectionView(result SomeRTCollectionView) (err error) {
 	return
 }
 
-// ValidateSomeRTCollectionViewTiny runs the validations defined on
-// SomeRTCollectionView using the "tiny" view.
-func ValidateSomeRTCollectionViewTiny(result SomeRTCollectionView) (err error) {
+// ValidateSomeRTListViewTiny runs the validations defined on
+// SomeRTListView using the "tiny" view.
+func ValidateSomeRTListViewTiny(result SomeRTListView) (err error) {
 	for _, item := range result {
 		if err2 := ValidateSomeRTViewTiny(item); err2 != nil {
 			err = goa.MergeErrors(err, err2)
@@ -693,16 +693,16 @@ func ValidateSomeRTCollectionViewTiny(result SomeRTCollectionView) (err error) {
 func ValidateAnotherResultView(result *AnotherResultView) (err error) {
 
 	if result.A != nil {
-		if err2 := ValidateAnotherResultCollectionView(result.A); err2 != nil {
+		if err2 := ValidateAnotherResultListView(result.A); err2 != nil {
 			err = goa.MergeErrors(err, err2)
 		}
 	}
 	return
 }
 
-// ValidateAnotherResultCollectionView runs the validations defined on
-// AnotherResultCollectionView using the "default" view.
-func ValidateAnotherResultCollectionView(result AnotherResultCollectionView) (err error) {
+// ValidateAnotherResultListView runs the validations defined on
+// AnotherResultListView using the "default" view.
+func ValidateAnotherResultListView(result AnotherResultListView) (err error) {
 	for _, item := range result {
 		if err2 := ValidateAnotherResultView(item); err2 != nil {
 			err = goa.MergeErrors(err, err2)

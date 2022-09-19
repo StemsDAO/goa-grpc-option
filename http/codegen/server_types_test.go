@@ -20,7 +20,7 @@ func TestServerTypes(t *testing.T) {
 		{"multiple-methods", testdata.MultipleMethodsDSL, MultipleMethodsServerTypesFile},
 		{"payload-extend-validate", testdata.PayloadExtendedValidateDSL, PayloadExtendedValidateServerTypesFile},
 		{"result-type-validate", testdata.ResultTypeValidateDSL, ResultTypeValidateServerTypesFile},
-		{"with-result-collection", testdata.ResultWithResultCollectionDSL, ResultWithResultCollectionServerTypesFile},
+		{"with-result-list", testdata.ResultWithResultListDSL, ResultWithResultListServerTypesFile},
 		{"with-result-view", testdata.ResultWithResultViewDSL, ResultWithResultViewServerTypesFile},
 		{"empty-error-response-body", testdata.EmptyErrorResponseBodyDSL, ""},
 		{"with-error-custom-pkg", testdata.WithErrorCustomPkgDSL, WithErrorCustomPkgServerTypesFile},
@@ -245,33 +245,33 @@ func NewMethodResultTypeValidateResponseBody(res *serviceresulttypevalidate.Resu
 }
 `
 
-const ResultWithResultCollectionServerTypesFile = `// MethodResultWithResultCollectionResponseBody is the type of the
-// "ServiceResultWithResultCollection" service
-// "MethodResultWithResultCollection" endpoint HTTP response body.
-type MethodResultWithResultCollectionResponseBody struct {
+const ResultWithResultListServerTypesFile = `// MethodResultWithResultListResponseBody is the type of the
+// "ServiceResultWithResultList" service
+// "MethodResultWithResultList" endpoint HTTP response body.
+type MethodResultWithResultListResponseBody struct {
 	A *ResulttypeResponseBody ` + "`" + `form:"a,omitempty" json:"a,omitempty" xml:"a,omitempty"` + "`" + `
 }
 
 // ResulttypeResponseBody is used to define fields on response body types.
 type ResulttypeResponseBody struct {
-	X RtCollectionResponseBody ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
+	X RtListResponseBody ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
 }
 
-// RtCollectionResponseBody is used to define fields on response body types.
-type RtCollectionResponseBody []*RtResponseBody
+// RtListResponseBody is used to define fields on response body types.
+type RtListResponseBody []*RtResponseBody
 
 // RtResponseBody is used to define fields on response body types.
 type RtResponseBody struct {
 	X *string ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
 }
 
-// NewMethodResultWithResultCollectionResponseBody builds the HTTP response
-// body from the result of the "MethodResultWithResultCollection" endpoint of
-// the "ServiceResultWithResultCollection" service.
-func NewMethodResultWithResultCollectionResponseBody(res *serviceresultwithresultcollection.MethodResultWithResultCollectionResult) *MethodResultWithResultCollectionResponseBody {
-	body := &MethodResultWithResultCollectionResponseBody{}
+// NewMethodResultWithResultListResponseBody builds the HTTP response
+// body from the result of the "MethodResultWithResultList" endpoint of
+// the "ServiceResultWithResultList" service.
+func NewMethodResultWithResultListResponseBody(res *serviceresultwithresultlist.MethodResultWithResultListResult) *MethodResultWithResultListResponseBody {
+	body := &MethodResultWithResultListResponseBody{}
 	if res.A != nil {
-		body.A = marshalServiceresultwithresultcollectionResulttypeToResulttypeResponseBody(res.A)
+		body.A = marshalServiceresultwithresultlistResulttypeToResulttypeResponseBody(res.A)
 	}
 	return body
 }

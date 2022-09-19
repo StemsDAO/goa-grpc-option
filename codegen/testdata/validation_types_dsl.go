@@ -125,12 +125,12 @@ var ValidationTypesDSL = func() {
 			})
 		})
 
-		_ = Type("Collection", CollectionOf(Result))
+		_ = Type("List", ListOf(Result))
 
-		_ = ResultType("application/vnd.goa.collection", func() {
-			TypeName("TypeWithCollection")
+		_ = ResultType("application/vnd.goa.list", func() {
+			TypeName("TypeWithList")
 			Attributes(func() {
-				Attribute("collection", CollectionOf(Result))
+				Attribute("list", ListOf(Result))
 			})
 		})
 	)

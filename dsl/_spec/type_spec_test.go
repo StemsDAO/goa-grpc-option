@@ -81,7 +81,7 @@ var AllTypes = Type("AllTypes", func() {
 	})
 	Attribute("user", AUserType)
 	Attribute("result", AResultType)
-	Attribute("collection", CollectionOf(AResultType))
+	Attribute("list", ListOf(AResultType))
 })
 
 // AUserType is a type used to define an attribute in AllTypes.
@@ -109,18 +109,18 @@ var AResultType = ResultType("ResultType", func() {
 	})
 })
 
-// ACollectionResult type shows all the possible DSL of CollectionOf.
-var ACollectionResult = CollectionOf(AResultType, func() {
-	// View allows defining collection specific views.
+// AListResult type shows all the possible DSL of ListOf.
+var AListResult = ListOf(AResultType, func() {
+	// View allows defining list specific views.
 	// The view is defined using the attributes of the element of the
-	// collection.
-	View("collection", func() {
+	// list.
+	View("list", func() {
 		Attribute("optional")
 	})
 
 	// View can also refer to existing views defined in the element result
 	// type. If no View is specified (i.e. no DSL argument is provided to
-	// CollectionOf) then all the element result type views are inherited.
+	// ListOf) then all the element result type views are inherited.
 	View("tiny")
 })
 

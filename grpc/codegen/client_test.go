@@ -93,7 +93,7 @@ func TestResponseDecoder(t *testing.T) {
 		{"result-primitive", testdata.UnaryRPCNoPayloadDSL, testdata.ResultPrimitiveResponseDecoderCode},
 		{"result-with-metadata", testdata.MessageWithMetadataDSL, testdata.ResultWithMetadataResponseDecoderCode},
 		{"result-with-validate", testdata.MessageWithValidateDSL, testdata.ResultWithValidateResponseDecoderCode},
-		{"result-collection", testdata.MessageResultTypeCollectionDSL, testdata.ResultCollectionResponseDecoderCode},
+		{"result-list", testdata.MessageResultTypeListDSL, testdata.ResultListResponseDecoderCode},
 		{"server-streaming", testdata.ServerStreamingUserTypeDSL, testdata.ServerStreamingResponseDecoderCode},
 		{"server-streaming-result-with-views", testdata.ServerStreamingResultWithViewsDSL, testdata.ServerStreamingResultWithViewsResponseDecoderCode},
 		{"client-streaming", testdata.ClientStreamingRPCDSL, testdata.ClientStreamingResponseDecoderCode},

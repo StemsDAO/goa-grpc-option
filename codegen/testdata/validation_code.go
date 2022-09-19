@@ -459,7 +459,7 @@ const (
 }
 `
 
-	ResultCollectionPointerValidationCode = `func Validate() (err error) {
+	ResultListPointerValidationCode = `func Validate() (err error) {
 	for _, e := range target {
 		if e != nil {
 			if err2 := ValidateResult(e); err2 != nil {
@@ -470,8 +470,8 @@ const (
 }
 `
 
-	TypeWithCollectionPointerValidationCode = `func Validate() (err error) {
-	if err2 := ValidateResultCollection(target.Collection); err2 != nil {
+	TypeWithListPointerValidationCode = `func Validate() (err error) {
+	if err2 := ValidateResultList(target.List); err2 != nil {
 		err = goa.MergeErrors(err, err2)
 	}
 }

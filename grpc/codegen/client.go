@@ -310,7 +310,7 @@ func Decode{{ .Method.VarName }}Response(ctx context.Context, v interface{}, hdr
 	{{- end }}
 	res := {{ .Response.ClientConvert.Init.Name }}({{ range .Response.ClientConvert.Init.Args }}{{ .Name }}, {{ end }})
 	{{- if .ViewedResultRef }}
-		vres := {{ if not .Method.ViewedResult.IsCollection }}&{{ end }}{{ .Method.ViewedResult.FullName }}{Projected: res, View: view}
+		vres := {{ if not .Method.ViewedResult.IsList }}&{{ end }}{{ .Method.ViewedResult.FullName }}{Projected: res, View: view}
 		if err {{ if or .Response.Headers .Response.Trailers }}={{ else }}:={{ end }} {{ .Method.ViewedResult.ViewsPkg }}.Validate{{ .Method.Result }}(vres); err != nil {
 			return nil, err
 		}

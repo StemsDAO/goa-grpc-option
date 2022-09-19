@@ -211,7 +211,7 @@ func View(name string, adsl ...func()) {
 		if len(adsl) > 0 {
 			ok = eval.Execute(adsl[0], at)
 		} else if a, ok := mt.Type.(*expr.Array); ok {
-			// inherit view from collection element if present
+			// inherit view from list element if present
 			elem := a.ElemType
 			if elem != nil {
 				if pa, ok2 := elem.Type.(*expr.ResultTypeExpr); ok2 {
@@ -242,18 +242,18 @@ func View(name string, adsl ...func()) {
 	}
 }
 
-// CollectionOf creates a collection result type from its element result type. A
-// collection result type represents the content of responses that return a
-// collection of values such as listings. The expression accepts an optional DSL
+// ListOf creates a list result type from its element result type. A
+// list result type represents the content of responses that return a
+// list of values such as listings. The expression accepts an optional DSL
 // as second argument that allows specifying which view(s) of the original result
 // type apply.
 //
 // The resulting result type identifier is built from the element result type by
-// appending the result type parameter "type" with value "collection".
+// appending the result type parameter "type" with value "list".
 //
-// CollectionOf must appear wherever ResultType can.
+// ListOf must appear wherever ResultType can.
 //
-// CollectionOf takes the element result type as first argument and an optional
+// ListOf takes the element result type as first argument and an optional
 // DSL as second argument.
 //
 // Example:
@@ -272,15 +272,15 @@ func View(name string, adsl ...func()) {
 //         })
 //     })
 //
-//     var MultiResults = CollectionOf(DivisionResult)
+//     var MultiResults = ListOf(DivisionResult)
 //
-//     var TinyMultiResults = CollectionOf(DivisionResult, func() {
-//         View("tiny")  // use "tiny" view to render the collection elements
+//     var TinyMultiResults = ListOf(DivisionResult, func() {
+//         View("tiny")  // use "tiny" view to render the list elements
 //     })
 //
-//     var MultiResultsExample = CollectionOf(DivisionResult, func() {
+//     var MultiResultsExample = ListOf(DivisionResult, func() {
 //         Attributes(func() {
-//             Example("DivisionResult Collection Examples", func() {
+//             Example("DivisionResult List Examples", func() {
 //                 Value([]Val{
 //                     {
 //                         "value":    4.167,
@@ -295,7 +295,7 @@ func View(name string, adsl ...func()) {
 //         })
 //     })
 //
-func CollectionOf(v interface{}, adsl ...func()) *expr.ResultTypeExpr {
+func ListOf(v interface{}, adsl ...func()) *expr.ResultTypeExpr {
 	var m *expr.ResultTypeExpr
 	var ok bool
 	m, ok = v.(*expr.ResultTypeExpr)
@@ -315,22 +315,22 @@ func CollectionOf(v interface{}, adsl ...func()) *expr.ResultTypeExpr {
 					}
 				}
 				if err != nil {
-					eval.ReportError("invalid result type identifier %#v in CollectionOf: %s", id, err)
+					eval.ReportError("invalid result type identifier %#v in ListOf: %s", id, err)
 				}
 			}
 		}
 	}
 	if m == nil {
-		eval.ReportError("invalid CollectionOf argument: not a result type and not a known result type identifier")
+		eval.ReportError("invalid ListOf argument: not a result type and not a known result type identifier")
 		// don't return nil to avoid panics, the error will get reported at the end
-		return expr.NewResultTypeExpr("InvalidCollection", "text/plain", nil)
+		return expr.NewResultTypeExpr("InvalidList", "text/plain", nil)
 	}
 	id := m.Identifier
 	rtype, params, err := mime.ParseMediaType(id)
 	if err != nil {
 		eval.ReportError("invalid result type identifier %#v: %s", id, err)
 		// don't return nil to avoid panics, the error will get reported at the end
-		return expr.NewResultTypeExpr("InvalidCollection", "text/plain", nil)
+		return expr.NewResultTypeExpr("InvalidList", "text/plain", nil)
 	}
 	hasType := false
 	for param := range params {
@@ -340,12 +340,12 @@ func CollectionOf(v interface{}, adsl ...func()) *expr.ResultTypeExpr {
 		}
 	}
 	if !hasType {
-		params["type"] = "collection"
+		params["type"] = "list"
 	}
 	id = mime.FormatMediaType(rtype, params)
 	canonical := expr.CanonicalIdentifier(id)
 	if mt := expr.Root.GeneratedResultType(canonical); mt != nil {
-		// Already have a type for this collection, reuse it.
+		// Already have a type for this list, reuse it.
 		return mt
 	}
 	mt := expr.NewResultTypeExpr("", id, func() {
@@ -354,17 +354,17 @@ func CollectionOf(v interface{}, adsl ...func()) *expr.ResultTypeExpr {
 			eval.IncompatibleDSL()
 			return
 		}
-		// Cannot compute collection type name before element result type
+		// Cannot compute list type name before element result type
 		// DSL has executed since the DSL may modify element type name
 		// via the TypeName function.
-		rt.TypeName = m.TypeName + "Collection"
+		rt.TypeName = m.TypeName + "List"
 		rt.AttributeExpr = &expr.AttributeExpr{Type: ArrayOf(m)}
 		if len(adsl) > 0 {
 			eval.Execute(adsl[0], rt)
 		}
 		if rt.Views == nil {
 			// If the DSL didn't create any view (or there is no DSL
-			// at all) then inherit the views from the collection
+			// at all) then inherit the views from the list
 			// element.
 			rt.Views = make([]*expr.ViewExpr, len(m.Views))
 			for i, v := range m.Views {

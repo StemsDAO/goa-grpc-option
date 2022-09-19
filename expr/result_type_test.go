@@ -102,8 +102,8 @@ func TestCanonicalIdentifier(t *testing.T) {
 			expected:   "application/vnd.goa.error",
 		},
 		"vendor with parameter": {
-			identifier: "application/vnd.goa.error+json; type=collection",
-			expected:   "application/vnd.goa.error; type=collection",
+			identifier: "application/vnd.goa.error+json; type=list",
+			expected:   "application/vnd.goa.error; type=list",
 		},
 	}
 

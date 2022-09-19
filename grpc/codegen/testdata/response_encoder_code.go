@@ -102,17 +102,17 @@ func EncodeMethodMessageWithValidateResponse(ctx context.Context, v interface{},
 }
 `
 
-const ResultCollectionResponseEncoderCode = `// EncodeMethodMessageUserTypeWithNestedUserTypesResponse encodes responses
+const ResultListResponseEncoderCode = `// EncodeMethodMessageUserTypeWithNestedUserTypesResponse encodes responses
 // from the "ServiceMessageUserTypeWithNestedUserTypes" service
 // "MethodMessageUserTypeWithNestedUserTypes" endpoint.
 func EncodeMethodMessageUserTypeWithNestedUserTypesResponse(ctx context.Context, v interface{}, hdr, trlr *metadata.MD) (interface{}, error) {
-	vres, ok := v.(servicemessageusertypewithnestedusertypesviews.RTCollection)
+	vres, ok := v.(servicemessageusertypewithnestedusertypesviews.RTList)
 	if !ok {
-		return nil, goagrpc.ErrInvalidType("ServiceMessageUserTypeWithNestedUserTypes", "MethodMessageUserTypeWithNestedUserTypes", "servicemessageusertypewithnestedusertypesviews.RTCollection", v)
+		return nil, goagrpc.ErrInvalidType("ServiceMessageUserTypeWithNestedUserTypes", "MethodMessageUserTypeWithNestedUserTypes", "servicemessageusertypewithnestedusertypesviews.RTList", v)
 	}
 	result := vres.Projected
 	(*hdr).Append("goa-view", vres.View)
-	resp := NewProtoRTCollection(result)
+	resp := NewProtoRTList(result)
 	return resp, nil
 }
 `

@@ -100,7 +100,7 @@ import (
 // when user type is being wrapped. Defaults to "field".
 //
 //	Method("ArtistRoles_ListAll", func() {
-//		Result(CollectionOf(ArtistRole), func() {
+//		Result(ListOf(ArtistRole), func() {
 //			Meta("struct:field:proto:wrapper", "artist_role")
 //		})
 //	})

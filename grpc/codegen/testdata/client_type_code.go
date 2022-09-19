@@ -164,40 +164,40 @@ func ValidateUUID(message *service_result_with_alias_validationpb.UUID) (err err
 }
 `
 
-const ResultWithCollectionClientTypeCode = `// NewProtoMethodResultWithCollectionRequest builds the gRPC request type from
-// the payload of the "MethodResultWithCollection" endpoint of the
-// "ServiceResultWithCollection" service.
-func NewProtoMethodResultWithCollectionRequest() *service_result_with_collectionpb.MethodResultWithCollectionRequest {
-	message := &service_result_with_collectionpb.MethodResultWithCollectionRequest{}
+const ResultWithListClientTypeCode = `// NewProtoMethodResultWithListRequest builds the gRPC request type from
+// the payload of the "MethodResultWithList" endpoint of the
+// "ServiceResultWithList" service.
+func NewProtoMethodResultWithListRequest() *service_result_with_listpb.MethodResultWithListRequest {
+	message := &service_result_with_listpb.MethodResultWithListRequest{}
 	return message
 }
 
-// NewMethodResultWithCollectionResult builds the result type of the
-// "MethodResultWithCollection" endpoint of the "ServiceResultWithCollection"
+// NewMethodResultWithListResult builds the result type of the
+// "MethodResultWithList" endpoint of the "ServiceResultWithList"
 // service from the gRPC response type.
-func NewMethodResultWithCollectionResult(message *service_result_with_collectionpb.MethodResultWithCollectionResponse) *serviceresultwithcollection.MethodResultWithCollectionResult {
-	result := &serviceresultwithcollection.MethodResultWithCollectionResult{}
+func NewMethodResultWithListResult(message *service_result_with_listpb.MethodResultWithListResponse) *serviceresultwithlist.MethodResultWithListResult {
+	result := &serviceresultwithlist.MethodResultWithListResult{}
 	if message.Result != nil {
-		result.Result = protobufServiceResultWithCollectionpbResultTToServiceresultwithcollectionResultT(message.Result)
+		result.Result = protobufServiceResultWithListpbResultTToServiceresultwithlistResultT(message.Result)
 	}
 	return result
 }
 
-// svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT
-// builds a value of type *service_result_with_collectionpb.ResultT from a
-// value of type *serviceresultwithcollection.ResultT.
-func svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT(v *serviceresultwithcollection.ResultT) *service_result_with_collectionpb.ResultT {
+// svcServiceresultwithlistResultTToServiceResultWithListpbResultT
+// builds a value of type *service_result_with_listpb.ResultT from a
+// value of type *serviceresultwithlist.ResultT.
+func svcServiceresultwithlistResultTToServiceResultWithListpbResultT(v *serviceresultwithlist.ResultT) *service_result_with_listpb.ResultT {
 	if v == nil {
 		return nil
 	}
-	res := &service_result_with_collectionpb.ResultT{}
-	if v.CollectionField != nil {
-		res.CollectionField = &service_result_with_collectionpb.RTCollection{}
-		res.CollectionField.Field = make([]*service_result_with_collectionpb.RT, len(v.CollectionField))
-		for i, val := range v.CollectionField {
-			res.CollectionField.Field[i] = &service_result_with_collectionpb.RT{}
+	res := &service_result_with_listpb.ResultT{}
+	if v.ListField != nil {
+		res.ListField = &service_result_with_listpb.RTList{}
+		res.ListField.Field = make([]*service_result_with_listpb.RT, len(v.ListField))
+		for i, val := range v.ListField {
+			res.ListField.Field[i] = &service_result_with_listpb.RT{}
 			if val.IntField != nil {
-				res.CollectionField.Field[i].IntField = int32(*val.IntField)
+				res.ListField.Field[i].IntField = int32(*val.IntField)
 			}
 		}
 	}
@@ -205,21 +205,21 @@ func svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT
 	return res
 }
 
-// protobufServiceResultWithCollectionpbResultTToServiceresultwithcollectionResultT
-// builds a value of type *serviceresultwithcollection.ResultT from a value of
-// type *service_result_with_collectionpb.ResultT.
-func protobufServiceResultWithCollectionpbResultTToServiceresultwithcollectionResultT(v *service_result_with_collectionpb.ResultT) *serviceresultwithcollection.ResultT {
+// protobufServiceResultWithListpbResultTToServiceresultwithlistResultT
+// builds a value of type *serviceresultwithlist.ResultT from a value of
+// type *service_result_with_listpb.ResultT.
+func protobufServiceResultWithListpbResultTToServiceresultwithlistResultT(v *service_result_with_listpb.ResultT) *serviceresultwithlist.ResultT {
 	if v == nil {
 		return nil
 	}
-	res := &serviceresultwithcollection.ResultT{}
-	if v.CollectionField != nil {
-		res.CollectionField = make([]*serviceresultwithcollection.RT, len(v.CollectionField.Field))
-		for i, val := range v.CollectionField.Field {
-			res.CollectionField[i] = &serviceresultwithcollection.RT{}
+	res := &serviceresultwithlist.ResultT{}
+	if v.ListField != nil {
+		res.ListField = make([]*serviceresultwithlist.RT, len(v.ListField.Field))
+		for i, val := range v.ListField.Field {
+			res.ListField[i] = &serviceresultwithlist.RT{}
 			if val.IntField != 0 {
 				intFieldptr := int(val.IntField)
-				res.CollectionField[i].IntField = &intFieldptr
+				res.ListField[i].IntField = &intFieldptr
 			}
 		}
 	}

@@ -227,11 +227,11 @@ message RecursiveT {
 }
 `
 
-const MessageResultTypeCollectionCode = `
+const MessageResultTypeListCode = `
 message MethodMessageUserTypeWithNestedUserTypesRequest {
 }
 
-message RTCollection {
+message RTList {
 	repeated RT field = 1;
 }
 
@@ -241,15 +241,15 @@ message RT {
 }
 `
 
-const MessageUserTypeWithCollectionCode = `
+const MessageUserTypeWithListCode = `
 message MethodMessageUserTypeWithPrimitivesRequest {
 }
 
 message MethodMessageUserTypeWithPrimitivesResponse {
-	RTCollection collection_field = 1;
+	RTList list_field = 1;
 }
 
-message RTCollection {
+message RTList {
 	repeated RT field = 1;
 }
 
@@ -374,25 +374,25 @@ message StringResponse {
 }
 `
 
-const MultipleMethodsSameResultCollectionProtoCode = `
+const MultipleMethodsSameResultListProtoCode = `
 syntax = "proto3";
 
-package multiple_methods_same_result_collection;
+package multiple_methods_same_result_list;
 
-option go_package = "/multiple_methods_same_result_collectionpb";
+option go_package = "/multiple_methods_same_result_listpb";
 
-// Service is the MultipleMethodsSameResultCollection service interface.
-service MultipleMethodsSameResultCollection {
+// Service is the MultipleMethodsSameResultList service interface.
+service MultipleMethodsSameResultList {
 	// MethodA implements method_a.
-	rpc MethodA (MethodARequest) returns (ResultTCollection);
+	rpc MethodA (MethodARequest) returns (ResultTList);
 	// MethodB implements method_b.
-	rpc MethodB (MethodBRequest) returns (ResultTCollection);
+	rpc MethodB (MethodBRequest) returns (ResultTList);
 }
 
 message MethodARequest {
 }
 
-message ResultTCollection {
+message ResultTList {
 	repeated ResultT field = 1;
 }
 

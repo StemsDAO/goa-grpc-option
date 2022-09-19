@@ -126,7 +126,7 @@ var StreamingResultWithExplicitViewDSL = func() {
 	})
 }
 
-var StreamingResultCollectionWithViewsDSL = func() {
+var StreamingResultListWithViewsDSL = func() {
 	var Request = Type("Request", func() {
 		Attribute("x", String)
 	})
@@ -145,10 +145,10 @@ var StreamingResultCollectionWithViewsDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("StreamingResultCollectionWithViewsService", func() {
-		Method("StreamingResultCollectionWithViewsMethod", func() {
+	Service("StreamingResultListWithViewsService", func() {
+		Method("StreamingResultListWithViewsMethod", func() {
 			Payload(Request)
-			StreamingResult(CollectionOf(Result))
+			StreamingResult(ListOf(Result))
 			HTTP(func() {
 				GET("/{x}")
 				Response(StatusOK)
@@ -157,7 +157,7 @@ var StreamingResultCollectionWithViewsDSL = func() {
 	})
 }
 
-var StreamingResultCollectionWithExplicitViewDSL = func() {
+var StreamingResultListWithExplicitViewDSL = func() {
 	var Request = Type("Request", func() {
 		Attribute("x", String)
 	})
@@ -176,10 +176,10 @@ var StreamingResultCollectionWithExplicitViewDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("StreamingResultCollectionWithExplicitViewService", func() {
-		Method("StreamingResultCollectionWithExplicitViewMethod", func() {
+	Service("StreamingResultListWithExplicitViewService", func() {
+		Method("StreamingResultListWithExplicitViewMethod", func() {
 			Payload(Request)
-			StreamingResult(CollectionOf(Result), func() {
+			StreamingResult(ListOf(Result), func() {
 				View("tiny")
 			})
 			HTTP(func() {
@@ -458,7 +458,7 @@ var StreamingPayloadResultWithExplicitViewDSL = func() {
 	})
 }
 
-var StreamingPayloadResultCollectionWithViewsDSL = func() {
+var StreamingPayloadResultListWithViewsDSL = func() {
 	var ResultT = ResultType("UserType", func() {
 		Attributes(func() {
 			Attribute("a", String)
@@ -474,10 +474,10 @@ var StreamingPayloadResultCollectionWithViewsDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("StreamingPayloadResultCollectionWithViewsService", func() {
-		Method("StreamingPayloadResultCollectionWithViewsMethod", func() {
+	Service("StreamingPayloadResultListWithViewsService", func() {
+		Method("StreamingPayloadResultListWithViewsMethod", func() {
 			StreamingPayload(Any)
-			Result(CollectionOf(ResultT))
+			Result(ListOf(ResultT))
 			HTTP(func() {
 				GET("/")
 				Response(StatusOK)
@@ -486,7 +486,7 @@ var StreamingPayloadResultCollectionWithViewsDSL = func() {
 	})
 }
 
-var StreamingPayloadResultCollectionWithExplicitViewDSL = func() {
+var StreamingPayloadResultListWithExplicitViewDSL = func() {
 	var ResultT = ResultType("UserType", func() {
 		Attributes(func() {
 			Attribute("a", String)
@@ -502,10 +502,10 @@ var StreamingPayloadResultCollectionWithExplicitViewDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("StreamingPayloadResultCollectionWithExplicitViewService", func() {
-		Method("StreamingPayloadResultCollectionWithExplicitViewMethod", func() {
+	Service("StreamingPayloadResultListWithExplicitViewService", func() {
+		Method("StreamingPayloadResultListWithExplicitViewMethod", func() {
 			StreamingPayload(Any)
-			Result(CollectionOf(ResultT), func() {
+			Result(ListOf(ResultT), func() {
 				View("tiny")
 			})
 			HTTP(func() {
@@ -697,7 +697,7 @@ var BidirectionalStreamingResultWithExplicitViewDSL = func() {
 	})
 }
 
-var BidirectionalStreamingResultCollectionWithViewsDSL = func() {
+var BidirectionalStreamingResultListWithViewsDSL = func() {
 	var ResultT = ResultType("UserType", func() {
 		Attributes(func() {
 			Attribute("a", String)
@@ -713,10 +713,10 @@ var BidirectionalStreamingResultCollectionWithViewsDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("BidirectionalStreamingResultCollectionWithViewsService", func() {
-		Method("BidirectionalStreamingResultCollectionWithViewsMethod", func() {
+	Service("BidirectionalStreamingResultListWithViewsService", func() {
+		Method("BidirectionalStreamingResultListWithViewsMethod", func() {
 			StreamingPayload(Any)
-			StreamingResult(CollectionOf(ResultT))
+			StreamingResult(ListOf(ResultT))
 			HTTP(func() {
 				GET("/")
 				Response(StatusOK)
@@ -725,7 +725,7 @@ var BidirectionalStreamingResultCollectionWithViewsDSL = func() {
 	})
 }
 
-var BidirectionalStreamingResultCollectionWithExplicitViewDSL = func() {
+var BidirectionalStreamingResultListWithExplicitViewDSL = func() {
 	var ResultT = ResultType("UserType", func() {
 		Attributes(func() {
 			Attribute("a", String)
@@ -741,10 +741,10 @@ var BidirectionalStreamingResultCollectionWithExplicitViewDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("BidirectionalStreamingResultCollectionWithExplicitViewService", func() {
-		Method("BidirectionalStreamingResultCollectionWithExplicitViewMethod", func() {
+	Service("BidirectionalStreamingResultListWithExplicitViewService", func() {
+		Method("BidirectionalStreamingResultListWithExplicitViewMethod", func() {
 			StreamingPayload(Any)
-			StreamingResult(CollectionOf(ResultT), func() {
+			StreamingResult(ListOf(ResultT), func() {
 				View("tiny")
 			})
 			HTTP(func() {

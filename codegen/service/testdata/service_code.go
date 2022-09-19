@@ -709,20 +709,20 @@ func newMultipleViewsViewTiny(res *MultipleViews) *withexplicitanddefaultviewsvi
 }
 `
 
-const ResultCollectionMultipleViewsMethod = `
-// Service is the ResultCollectionMultipleViewsMethod service interface.
+const ResultListMultipleViewsMethod = `
+// Service is the ResultListMultipleViewsMethod service interface.
 type Service interface {
 	// A implements A.
 	// The "view" return value must have one of the following views
 	//	- "default"
 	//	- "tiny"
-	A(context.Context) (res MultipleViewsCollection, view string, err error)
+	A(context.Context) (res MultipleViewsList, view string, err error)
 }
 
 // ServiceName is the name of the service as defined in the design. This is the
 // same value that is set in the endpoint request contexts under the ServiceKey
 // key.
-const ServiceName = "ResultCollectionMultipleViewsMethod"
+const ServiceName = "ResultListMultipleViewsMethod"
 
 // MethodNames lists the service method names as defined in the design. These
 // are the same values that are set in the endpoint request contexts under the
@@ -734,74 +734,74 @@ type MultipleViews struct {
 	B int
 }
 
-// MultipleViewsCollection is the result type of the
-// ResultCollectionMultipleViewsMethod service A method.
-type MultipleViewsCollection []*MultipleViews
+// MultipleViewsList is the result type of the
+// ResultListMultipleViewsMethod service A method.
+type MultipleViewsList []*MultipleViews
 
-// NewMultipleViewsCollection initializes result type MultipleViewsCollection
-// from viewed result type MultipleViewsCollection.
-func NewMultipleViewsCollection(vres resultcollectionmultipleviewsmethodviews.MultipleViewsCollection) MultipleViewsCollection {
-	var res MultipleViewsCollection
+// NewMultipleViewsList initializes result type MultipleViewsList
+// from viewed result type MultipleViewsList.
+func NewMultipleViewsList(vres resultlistmultipleviewsmethodviews.MultipleViewsList) MultipleViewsList {
+	var res MultipleViewsList
 	switch vres.View {
 	case "default", "":
-		res = newMultipleViewsCollection(vres.Projected)
+		res = newMultipleViewsList(vres.Projected)
 	case "tiny":
-		res = newMultipleViewsCollectionTiny(vres.Projected)
+		res = newMultipleViewsListTiny(vres.Projected)
 	}
 	return res
 }
 
-// NewViewedMultipleViewsCollection initializes viewed result type
-// MultipleViewsCollection from result type MultipleViewsCollection using the
+// NewViewedMultipleViewsList initializes viewed result type
+// MultipleViewsList from result type MultipleViewsList using the
 // given view.
-func NewViewedMultipleViewsCollection(res MultipleViewsCollection, view string) resultcollectionmultipleviewsmethodviews.MultipleViewsCollection {
-	var vres resultcollectionmultipleviewsmethodviews.MultipleViewsCollection
+func NewViewedMultipleViewsList(res MultipleViewsList, view string) resultlistmultipleviewsmethodviews.MultipleViewsList {
+	var vres resultlistmultipleviewsmethodviews.MultipleViewsList
 	switch view {
 	case "default", "":
-		p := newMultipleViewsCollectionView(res)
-		vres = resultcollectionmultipleviewsmethodviews.MultipleViewsCollection{Projected: p, View: "default"}
+		p := newMultipleViewsListView(res)
+		vres = resultlistmultipleviewsmethodviews.MultipleViewsList{Projected: p, View: "default"}
 	case "tiny":
-		p := newMultipleViewsCollectionViewTiny(res)
-		vres = resultcollectionmultipleviewsmethodviews.MultipleViewsCollection{Projected: p, View: "tiny"}
+		p := newMultipleViewsListViewTiny(res)
+		vres = resultlistmultipleviewsmethodviews.MultipleViewsList{Projected: p, View: "tiny"}
 	}
 	return vres
 }
 
-// newMultipleViewsCollection converts projected type MultipleViewsCollection
-// to service type MultipleViewsCollection.
-func newMultipleViewsCollection(vres resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView) MultipleViewsCollection {
-	res := make(MultipleViewsCollection, len(vres))
+// newMultipleViewsList converts projected type MultipleViewsList
+// to service type MultipleViewsList.
+func newMultipleViewsList(vres resultlistmultipleviewsmethodviews.MultipleViewsListView) MultipleViewsList {
+	res := make(MultipleViewsList, len(vres))
 	for i, n := range vres {
 		res[i] = newMultipleViews(n)
 	}
 	return res
 }
 
-// newMultipleViewsCollectionTiny converts projected type
-// MultipleViewsCollection to service type MultipleViewsCollection.
-func newMultipleViewsCollectionTiny(vres resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView) MultipleViewsCollection {
-	res := make(MultipleViewsCollection, len(vres))
+// newMultipleViewsListTiny converts projected type
+// MultipleViewsList to service type MultipleViewsList.
+func newMultipleViewsListTiny(vres resultlistmultipleviewsmethodviews.MultipleViewsListView) MultipleViewsList {
+	res := make(MultipleViewsList, len(vres))
 	for i, n := range vres {
 		res[i] = newMultipleViewsTiny(n)
 	}
 	return res
 }
 
-// newMultipleViewsCollectionView projects result type MultipleViewsCollection
-// to projected type MultipleViewsCollectionView using the "default" view.
-func newMultipleViewsCollectionView(res MultipleViewsCollection) resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView {
-	vres := make(resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView, len(res))
+// newMultipleViewsListView projects result type MultipleViewsList
+// to projected type MultipleViewsListView using the "default" view.
+func newMultipleViewsListView(res MultipleViewsList) resultlistmultipleviewsmethodviews.MultipleViewsListView {
+	vres := make(resultlistmultipleviewsmethodviews.MultipleViewsListView, len(res))
 	for i, n := range res {
 		vres[i] = newMultipleViewsView(n)
 	}
 	return vres
 }
 
-// newMultipleViewsCollectionViewTiny projects result type
-// MultipleViewsCollection to projected type MultipleViewsCollectionView using
+// newMultipleViewsListViewTiny projects result type
+// MultipleViewsList to projected type MultipleViewsListView using
 // the "tiny" view.
-func newMultipleViewsCollectionViewTiny(res MultipleViewsCollection) resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView {
-	vres := make(resultcollectionmultipleviewsmethodviews.MultipleViewsCollectionView, len(res))
+func newMultipleViewsListViewTiny(res MultipleViewsList) resultlistmultipleviewsmethodviews.MultipleViewsListView {
+	vres := make(resultlistmultipleviewsmethodviews.MultipleViewsListView, len(res))
 	for i, n := range res {
 		vres[i] = newMultipleViewsViewTiny(n)
 	}
@@ -810,7 +810,7 @@ func newMultipleViewsCollectionViewTiny(res MultipleViewsCollection) resultcolle
 
 // newMultipleViews converts projected type MultipleViews to service type
 // MultipleViews.
-func newMultipleViews(vres *resultcollectionmultipleviewsmethodviews.MultipleViewsView) *MultipleViews {
+func newMultipleViews(vres *resultlistmultipleviewsmethodviews.MultipleViewsView) *MultipleViews {
 	res := &MultipleViews{}
 	if vres.A != nil {
 		res.A = *vres.A
@@ -823,7 +823,7 @@ func newMultipleViews(vres *resultcollectionmultipleviewsmethodviews.MultipleVie
 
 // newMultipleViewsTiny converts projected type MultipleViews to service type
 // MultipleViews.
-func newMultipleViewsTiny(vres *resultcollectionmultipleviewsmethodviews.MultipleViewsView) *MultipleViews {
+func newMultipleViewsTiny(vres *resultlistmultipleviewsmethodviews.MultipleViewsView) *MultipleViews {
 	res := &MultipleViews{}
 	if vres.A != nil {
 		res.A = *vres.A
@@ -833,8 +833,8 @@ func newMultipleViewsTiny(vres *resultcollectionmultipleviewsmethodviews.Multipl
 
 // newMultipleViewsView projects result type MultipleViews to projected type
 // MultipleViewsView using the "default" view.
-func newMultipleViewsView(res *MultipleViews) *resultcollectionmultipleviewsmethodviews.MultipleViewsView {
-	vres := &resultcollectionmultipleviewsmethodviews.MultipleViewsView{
+func newMultipleViewsView(res *MultipleViews) *resultlistmultipleviewsmethodviews.MultipleViewsView {
+	vres := &resultlistmultipleviewsmethodviews.MultipleViewsView{
 		A: &res.A,
 		B: &res.B,
 	}
@@ -843,8 +843,8 @@ func newMultipleViewsView(res *MultipleViews) *resultcollectionmultipleviewsmeth
 
 // newMultipleViewsViewTiny projects result type MultipleViews to projected
 // type MultipleViewsView using the "tiny" view.
-func newMultipleViewsViewTiny(res *MultipleViews) *resultcollectionmultipleviewsmethodviews.MultipleViewsView {
-	vres := &resultcollectionmultipleviewsmethodviews.MultipleViewsView{
+func newMultipleViewsViewTiny(res *MultipleViews) *resultlistmultipleviewsmethodviews.MultipleViewsView {
+	vres := &resultlistmultipleviewsmethodviews.MultipleViewsView{
 		A: &res.A,
 	}
 	return vres
@@ -1000,8 +1000,8 @@ func newMultipleViews2ViewTiny(res *MultipleViews2) *resultwithotherresultviews.
 }
 `
 
-const ResultWithResultCollectionMethod = `
-// Service is the ResultWithResultTypeCollection service interface.
+const ResultWithResultListMethod = `
+// Service is the ResultWithResultTypeList service interface.
 type Service interface {
 	// A implements A.
 	// The "view" return value must have one of the following views
@@ -1014,16 +1014,16 @@ type Service interface {
 // ServiceName is the name of the service as defined in the design. This is the
 // same value that is set in the endpoint request contexts under the ServiceKey
 // key.
-const ServiceName = "ResultWithResultTypeCollection"
+const ServiceName = "ResultWithResultTypeList"
 
 // MethodNames lists the service method names as defined in the design. These
 // are the same values that are set in the endpoint request contexts under the
 // MethodKey key.
 var MethodNames = [1]string{"A"}
 
-// RT is the result type of the ResultWithResultTypeCollection service A method.
+// RT is the result type of the ResultWithResultTypeList service A method.
 type RT struct {
-	A RT2Collection
+	A RT2List
 }
 
 type RT2 struct {
@@ -1032,10 +1032,10 @@ type RT2 struct {
 	E *string
 }
 
-type RT2Collection []*RT2
+type RT2List []*RT2
 
 // NewRT initializes result type RT from viewed result type RT.
-func NewRT(vres *resultwithresulttypecollectionviews.RT) *RT {
+func NewRT(vres *resultwithresulttypelistviews.RT) *RT {
 	var res *RT
 	switch vres.View {
 	case "default", "":
@@ -1050,133 +1050,133 @@ func NewRT(vres *resultwithresulttypecollectionviews.RT) *RT {
 
 // NewViewedRT initializes viewed result type RT from result type RT using the
 // given view.
-func NewViewedRT(res *RT, view string) *resultwithresulttypecollectionviews.RT {
-	var vres *resultwithresulttypecollectionviews.RT
+func NewViewedRT(res *RT, view string) *resultwithresulttypelistviews.RT {
+	var vres *resultwithresulttypelistviews.RT
 	switch view {
 	case "default", "":
 		p := newRTView(res)
-		vres = &resultwithresulttypecollectionviews.RT{Projected: p, View: "default"}
+		vres = &resultwithresulttypelistviews.RT{Projected: p, View: "default"}
 	case "extended":
 		p := newRTViewExtended(res)
-		vres = &resultwithresulttypecollectionviews.RT{Projected: p, View: "extended"}
+		vres = &resultwithresulttypelistviews.RT{Projected: p, View: "extended"}
 	case "tiny":
 		p := newRTViewTiny(res)
-		vres = &resultwithresulttypecollectionviews.RT{Projected: p, View: "tiny"}
+		vres = &resultwithresulttypelistviews.RT{Projected: p, View: "tiny"}
 	}
 	return vres
 }
 
 // newRT converts projected type RT to service type RT.
-func newRT(vres *resultwithresulttypecollectionviews.RTView) *RT {
+func newRT(vres *resultwithresulttypelistviews.RTView) *RT {
 	res := &RT{}
 	if vres.A != nil {
-		res.A = newRT2Collection(vres.A)
+		res.A = newRT2List(vres.A)
 	}
 	return res
 }
 
 // newRTExtended converts projected type RT to service type RT.
-func newRTExtended(vres *resultwithresulttypecollectionviews.RTView) *RT {
+func newRTExtended(vres *resultwithresulttypelistviews.RTView) *RT {
 	res := &RT{}
 	if vres.A != nil {
-		res.A = newRT2CollectionExtended(vres.A)
+		res.A = newRT2ListExtended(vres.A)
 	}
 	return res
 }
 
 // newRTTiny converts projected type RT to service type RT.
-func newRTTiny(vres *resultwithresulttypecollectionviews.RTView) *RT {
+func newRTTiny(vres *resultwithresulttypelistviews.RTView) *RT {
 	res := &RT{}
 	if vres.A != nil {
-		res.A = newRT2CollectionTiny(vres.A)
+		res.A = newRT2ListTiny(vres.A)
 	}
 	return res
 }
 
 // newRTView projects result type RT to projected type RTView using the
 // "default" view.
-func newRTView(res *RT) *resultwithresulttypecollectionviews.RTView {
-	vres := &resultwithresulttypecollectionviews.RTView{}
+func newRTView(res *RT) *resultwithresulttypelistviews.RTView {
+	vres := &resultwithresulttypelistviews.RTView{}
 	if res.A != nil {
-		vres.A = newRT2CollectionView(res.A)
+		vres.A = newRT2ListView(res.A)
 	}
 	return vres
 }
 
 // newRTViewExtended projects result type RT to projected type RTView using the
 // "extended" view.
-func newRTViewExtended(res *RT) *resultwithresulttypecollectionviews.RTView {
-	vres := &resultwithresulttypecollectionviews.RTView{}
+func newRTViewExtended(res *RT) *resultwithresulttypelistviews.RTView {
+	vres := &resultwithresulttypelistviews.RTView{}
 	if res.A != nil {
-		vres.A = newRT2CollectionViewExtended(res.A)
+		vres.A = newRT2ListViewExtended(res.A)
 	}
 	return vres
 }
 
 // newRTViewTiny projects result type RT to projected type RTView using the
 // "tiny" view.
-func newRTViewTiny(res *RT) *resultwithresulttypecollectionviews.RTView {
-	vres := &resultwithresulttypecollectionviews.RTView{}
+func newRTViewTiny(res *RT) *resultwithresulttypelistviews.RTView {
+	vres := &resultwithresulttypelistviews.RTView{}
 	if res.A != nil {
-		vres.A = newRT2CollectionViewTiny(res.A)
+		vres.A = newRT2ListViewTiny(res.A)
 	}
 	return vres
 }
 
-// newRT2Collection converts projected type RT2Collection to service type
-// RT2Collection.
-func newRT2Collection(vres resultwithresulttypecollectionviews.RT2CollectionView) RT2Collection {
-	res := make(RT2Collection, len(vres))
+// newRT2List converts projected type RT2List to service type
+// RT2List.
+func newRT2List(vres resultwithresulttypelistviews.RT2ListView) RT2List {
+	res := make(RT2List, len(vres))
 	for i, n := range vres {
 		res[i] = newRT2(n)
 	}
 	return res
 }
 
-// newRT2CollectionExtended converts projected type RT2Collection to service
-// type RT2Collection.
-func newRT2CollectionExtended(vres resultwithresulttypecollectionviews.RT2CollectionView) RT2Collection {
-	res := make(RT2Collection, len(vres))
+// newRT2ListExtended converts projected type RT2List to service
+// type RT2List.
+func newRT2ListExtended(vres resultwithresulttypelistviews.RT2ListView) RT2List {
+	res := make(RT2List, len(vres))
 	for i, n := range vres {
 		res[i] = newRT2Extended(n)
 	}
 	return res
 }
 
-// newRT2CollectionTiny converts projected type RT2Collection to service type
-// RT2Collection.
-func newRT2CollectionTiny(vres resultwithresulttypecollectionviews.RT2CollectionView) RT2Collection {
-	res := make(RT2Collection, len(vres))
+// newRT2ListTiny converts projected type RT2List to service type
+// RT2List.
+func newRT2ListTiny(vres resultwithresulttypelistviews.RT2ListView) RT2List {
+	res := make(RT2List, len(vres))
 	for i, n := range vres {
 		res[i] = newRT2Tiny(n)
 	}
 	return res
 }
 
-// newRT2CollectionView projects result type RT2Collection to projected type
-// RT2CollectionView using the "default" view.
-func newRT2CollectionView(res RT2Collection) resultwithresulttypecollectionviews.RT2CollectionView {
-	vres := make(resultwithresulttypecollectionviews.RT2CollectionView, len(res))
+// newRT2ListView projects result type RT2List to projected type
+// RT2ListView using the "default" view.
+func newRT2ListView(res RT2List) resultwithresulttypelistviews.RT2ListView {
+	vres := make(resultwithresulttypelistviews.RT2ListView, len(res))
 	for i, n := range res {
 		vres[i] = newRT2View(n)
 	}
 	return vres
 }
 
-// newRT2CollectionViewExtended projects result type RT2Collection to projected
-// type RT2CollectionView using the "extended" view.
-func newRT2CollectionViewExtended(res RT2Collection) resultwithresulttypecollectionviews.RT2CollectionView {
-	vres := make(resultwithresulttypecollectionviews.RT2CollectionView, len(res))
+// newRT2ListViewExtended projects result type RT2List to projected
+// type RT2ListView using the "extended" view.
+func newRT2ListViewExtended(res RT2List) resultwithresulttypelistviews.RT2ListView {
+	vres := make(resultwithresulttypelistviews.RT2ListView, len(res))
 	for i, n := range res {
 		vres[i] = newRT2ViewExtended(n)
 	}
 	return vres
 }
 
-// newRT2CollectionViewTiny projects result type RT2Collection to projected
-// type RT2CollectionView using the "tiny" view.
-func newRT2CollectionViewTiny(res RT2Collection) resultwithresulttypecollectionviews.RT2CollectionView {
-	vres := make(resultwithresulttypecollectionviews.RT2CollectionView, len(res))
+// newRT2ListViewTiny projects result type RT2List to projected
+// type RT2ListView using the "tiny" view.
+func newRT2ListViewTiny(res RT2List) resultwithresulttypelistviews.RT2ListView {
+	vres := make(resultwithresulttypelistviews.RT2ListView, len(res))
 	for i, n := range res {
 		vres[i] = newRT2ViewTiny(n)
 	}
@@ -1184,7 +1184,7 @@ func newRT2CollectionViewTiny(res RT2Collection) resultwithresulttypecollectionv
 }
 
 // newRT2 converts projected type RT2 to service type RT2.
-func newRT2(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
+func newRT2(vres *resultwithresulttypelistviews.RT2View) *RT2 {
 	res := &RT2{}
 	if vres.C != nil {
 		res.C = *vres.C
@@ -1196,7 +1196,7 @@ func newRT2(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
 }
 
 // newRT2Extended converts projected type RT2 to service type RT2.
-func newRT2Extended(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
+func newRT2Extended(vres *resultwithresulttypelistviews.RT2View) *RT2 {
 	res := &RT2{
 		E: vres.E,
 	}
@@ -1210,7 +1210,7 @@ func newRT2Extended(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
 }
 
 // newRT2Tiny converts projected type RT2 to service type RT2.
-func newRT2Tiny(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
+func newRT2Tiny(vres *resultwithresulttypelistviews.RT2View) *RT2 {
 	res := &RT2{}
 	if vres.D != nil {
 		res.D = *vres.D
@@ -1220,8 +1220,8 @@ func newRT2Tiny(vres *resultwithresulttypecollectionviews.RT2View) *RT2 {
 
 // newRT2View projects result type RT2 to projected type RT2View using the
 // "default" view.
-func newRT2View(res *RT2) *resultwithresulttypecollectionviews.RT2View {
-	vres := &resultwithresulttypecollectionviews.RT2View{
+func newRT2View(res *RT2) *resultwithresulttypelistviews.RT2View {
+	vres := &resultwithresulttypelistviews.RT2View{
 		C: &res.C,
 		D: &res.D,
 	}
@@ -1230,8 +1230,8 @@ func newRT2View(res *RT2) *resultwithresulttypecollectionviews.RT2View {
 
 // newRT2ViewExtended projects result type RT2 to projected type RT2View using
 // the "extended" view.
-func newRT2ViewExtended(res *RT2) *resultwithresulttypecollectionviews.RT2View {
-	vres := &resultwithresulttypecollectionviews.RT2View{
+func newRT2ViewExtended(res *RT2) *resultwithresulttypelistviews.RT2View {
+	vres := &resultwithresulttypelistviews.RT2View{
 		C: &res.C,
 		D: &res.D,
 		E: res.E,
@@ -1241,8 +1241,8 @@ func newRT2ViewExtended(res *RT2) *resultwithresulttypecollectionviews.RT2View {
 
 // newRT2ViewTiny projects result type RT2 to projected type RT2View using the
 // "tiny" view.
-func newRT2ViewTiny(res *RT2) *resultwithresulttypecollectionviews.RT2View {
-	vres := &resultwithresulttypecollectionviews.RT2View{
+func newRT2ViewTiny(res *RT2) *resultwithresulttypelistviews.RT2View {
+	vres := &resultwithresulttypelistviews.RT2View{
 		D: &res.D,
 	}
 	return vres
@@ -1274,12 +1274,12 @@ type ApplicationDashedType struct {
 	Name *string
 }
 
-type ApplicationDashedTypeCollection []*ApplicationDashedType
+type ApplicationDashedTypeList []*ApplicationDashedType
 
 // ListResult is the result type of the ResultWithDashedMimeType service list
 // method.
 type ListResult struct {
-	Items ApplicationDashedTypeCollection
+	Items ApplicationDashedTypeList
 }
 
 // NewApplicationDashedType initializes result type ApplicationDashedType from

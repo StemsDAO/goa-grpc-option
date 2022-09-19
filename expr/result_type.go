@@ -235,7 +235,7 @@ func project(m *ResultTypeExpr, view string, seen map[string]*AttributeExpr) (*R
 		return m, nil
 	}
 	if _, ok := m.Type.(*Array); ok {
-		return projectCollection(m, view, seen)
+		return projectList(m, view, seen)
 	}
 	return projectSingle(m, view, seen)
 }
@@ -319,15 +319,15 @@ func projectSingle(m *ResultTypeExpr, view string, seen map[string]*AttributeExp
 	return projected, nil
 }
 
-func projectCollection(m *ResultTypeExpr, view string, seen map[string]*AttributeExpr) (*ResultTypeExpr, error) {
-	// Project the collection element result type
+func projectList(m *ResultTypeExpr, view string, seen map[string]*AttributeExpr) (*ResultTypeExpr, error) {
+	// Project the list element result type
 	e := m.Type.(*Array).ElemType.Type.(*ResultTypeExpr) // validation checked this cast would work
 	pe, err2 := project(e, view, seen)
 	if err2 != nil {
-		return nil, fmt.Errorf("collection element: %s", err2)
+		return nil, fmt.Errorf("list element: %s", err2)
 	}
 
-	// Build the projected collection with the results
+	// Build the projected list with the results
 	id := m.projectIdentifier(view)
 	proj := &ResultTypeExpr{
 		Identifier: id,
@@ -337,7 +337,7 @@ func projectCollection(m *ResultTypeExpr, view string, seen map[string]*Attribut
 				Type:         &Array{ElemType: &AttributeExpr{Type: pe}},
 				UserExamples: m.UserExamples,
 			},
-			TypeName: pe.TypeName + "Collection",
+			TypeName: pe.TypeName + "List",
 			UID:      id,
 		},
 		Views: []*ViewExpr{{
@@ -347,7 +347,7 @@ func projectCollection(m *ResultTypeExpr, view string, seen map[string]*Attribut
 		}},
 	}
 
-	// Run the DSL that was created by the CollectionOf function
+	// Run the DSL that was created by the ListOf function
 	if !eval.Execute(proj.DSL(), proj) {
 		return nil, eval.Context.Errors
 	}

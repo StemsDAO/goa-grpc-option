@@ -16,23 +16,23 @@ var (
 	embeddedResult        = resultType("r", simpleResult, view("default", "r:link", AsObject(simpleResult)))
 	embeddedResultDefault = resultType("r", simpleResultLink)
 
-	collectionResult        = collection(simpleResult)
-	collectionResultDefault = collection(simpleResultDefault)
-	collectionResultLink    = collection(simpleResultLink)
+	listResult        = list(simpleResult)
+	listResultDefault = list(simpleResultDefault)
+	listResultLink    = list(simpleResultLink)
 
-	collectionLinkView = object(String)
-	compositeResult    = resultType("a", object(collectionResult), "b", String,
+	listLinkView = object(String)
+	compositeResult    = resultType("a", object(listResult), "b", String,
 		view("default", "a", object(String), "b", String),
-		view("link", "a", collectionLinkView))
-	compositeResultDefault = resultType("a", object(collectionResultDefault), "b", String)
-	compositeResultLink    = resultType("a", object(collectionResultLink))
+		view("link", "a", listLinkView))
+	compositeResultDefault = resultType("a", object(listResultDefault), "b", String)
+	compositeResultLink    = resultType("a", object(listResultLink))
 
 	recursiveResult         = resultRecursive("a", String, view("default", "a", object(String)))
 	embeddedRecursiveResult = resultType("a", String, "rec", recursiveResult)
 )
 
 func init() {
-	vobj := (*collectionLinkView)[0]
+	vobj := (*listLinkView)[0]
 	vobj.Attribute.Meta = map[string][]string{"view": {"link"}}
 }
 
@@ -46,8 +46,8 @@ func TestProject(t *testing.T) {
 		{"default", simpleResult, "default", simpleResultDefault},
 		{"link", simpleResult, "link", simpleResultLink},
 		{"embedded", embeddedResult, "default", embeddedResultDefault},
-		{"collection-default", collectionResult, "default", collectionResultDefault},
-		{"collection-link", collectionResult, "link", collectionResultLink},
+		{"list-default", listResult, "default", listResultDefault},
+		{"list-link", listResult, "link", listResultLink},
 		{"composite-default", compositeResult, "default", compositeResultDefault},
 		{"composite-link", compositeResult, "link", compositeResultLink},
 		{"recursive", recursiveResult, "default", embeddedRecursiveResult},
@@ -144,7 +144,7 @@ func resultType(params ...interface{}) *ResultTypeExpr {
 	}
 }
 
-func collection(elemType *ResultTypeExpr) *ResultTypeExpr {
+func list(elemType *ResultTypeExpr) *ResultTypeExpr {
 	return &ResultTypeExpr{
 		UserTypeExpr: &UserTypeExpr{
 			AttributeExpr: &AttributeExpr{

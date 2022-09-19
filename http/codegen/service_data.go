@@ -2163,7 +2163,7 @@ func buildResponseBodyType(body, att *expr.AttributeExpr, loc *codegen.Location,
 				if validateDef != "" {
 					target := "&body"
 					if expr.IsArray(ut) {
-						// result type collection
+						// result type list
 						target = "body"
 					}
 					validateRef = fmt.Sprintf("err = Validate%s(%s)", varname, target)

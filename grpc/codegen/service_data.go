@@ -704,7 +704,7 @@ func collectMessages(at *expr.AttributeExpr, sd *ServiceData, seen map[string]st
 		att := dt.Attribute()
 		if rt, ok := dt.(*expr.ResultTypeExpr); ok {
 			if a := unwrapAttr(expr.DupAtt(rt.Attribute())); expr.IsArray(a.Type) && expr.IsObject(rt) {
-				// result type collection
+				// result type list
 				att = &expr.AttributeExpr{Type: expr.AsObject(rt)}
 			}
 		}
@@ -761,7 +761,7 @@ func addValidation(att *expr.AttributeExpr, attName string, sd *ServiceData, req
 	att = ut.Attribute()
 	if rt, ok := ut.(*expr.ResultTypeExpr); ok {
 		if a := unwrapAttr(expr.DupAtt(rt.Attribute())); expr.IsArray(a.Type) {
-			// result type collection
+			// result type list
 			att = &expr.AttributeExpr{Type: expr.AsObject(rt)}
 		}
 	}
@@ -831,7 +831,7 @@ func collectValidations(att *expr.AttributeExpr, attName string, ctx *codegen.At
 		att := dt.Attribute()
 		if rt, ok := dt.(*expr.ResultTypeExpr); ok {
 			if a := unwrapAttr(expr.DupAtt(rt.Attribute())); expr.IsArray(a.Type) {
-				// result type collection
+				// result type list
 				att = &expr.AttributeExpr{Type: expr.AsObject(rt)}
 			}
 		}
@@ -1450,7 +1450,7 @@ func (s *{{ .VarName }}) {{ .RecvName }}() ({{ .RecvRef }}, error) {
 	}
 {{- if and .Endpoint.Method.ViewedResult (eq .Type "client") }}
 	proj := {{ .RecvConvert.Init.Name }}({{ range .RecvConvert.Init.Args }}{{ .Name }}, {{ end }})
-	vres := {{ if not .Endpoint.Method.ViewedResult.IsCollection }}&{{ end }}{{ .Endpoint.Method.ViewedResult.FullName }}{Projected: proj, View: {{ if .Endpoint.Method.ViewedResult.ViewName }}"{{ .Endpoint.Method.ViewedResult.ViewName }}"{{ else }}s.view{{ end }} }
+	vres := {{ if not .Endpoint.Method.ViewedResult.IsList }}&{{ end }}{{ .Endpoint.Method.ViewedResult.FullName }}{Projected: proj, View: {{ if .Endpoint.Method.ViewedResult.ViewName }}"{{ .Endpoint.Method.ViewedResult.ViewName }}"{{ else }}s.view{{ end }} }
 	if err := {{ .Endpoint.Method.ViewedResult.ViewsPkg }}.Validate{{ .Endpoint.Method.Result }}(vres); err != nil {
 	  return nil, err
 	}

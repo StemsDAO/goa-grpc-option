@@ -171,32 +171,32 @@ func NewProtoMethodMessageUserTypeWithAliasResponse(result *servicemessageuserty
 }
 `
 
-const ResultWithCollectionServerTypeCode = `// NewProtoMethodResultWithCollectionResponse builds the gRPC response type
-// from the result of the "MethodResultWithCollection" endpoint of the
-// "ServiceResultWithCollection" service.
-func NewProtoMethodResultWithCollectionResponse(result *serviceresultwithcollection.MethodResultWithCollectionResult) *service_result_with_collectionpb.MethodResultWithCollectionResponse {
-	message := &service_result_with_collectionpb.MethodResultWithCollectionResponse{}
+const ResultWithListServerTypeCode = `// NewProtoMethodResultWithListResponse builds the gRPC response type
+// from the result of the "MethodResultWithList" endpoint of the
+// "ServiceResultWithList" service.
+func NewProtoMethodResultWithListResponse(result *serviceresultwithlist.MethodResultWithListResult) *service_result_with_listpb.MethodResultWithListResponse {
+	message := &service_result_with_listpb.MethodResultWithListResponse{}
 	if result.Result != nil {
-		message.Result = svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT(result.Result)
+		message.Result = svcServiceresultwithlistResultTToServiceResultWithListpbResultT(result.Result)
 	}
 	return message
 }
 
-// svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT
-// builds a value of type *service_result_with_collectionpb.ResultT from a
-// value of type *serviceresultwithcollection.ResultT.
-func svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT(v *serviceresultwithcollection.ResultT) *service_result_with_collectionpb.ResultT {
+// svcServiceresultwithlistResultTToServiceResultWithListpbResultT
+// builds a value of type *service_result_with_listpb.ResultT from a
+// value of type *serviceresultwithlist.ResultT.
+func svcServiceresultwithlistResultTToServiceResultWithListpbResultT(v *serviceresultwithlist.ResultT) *service_result_with_listpb.ResultT {
 	if v == nil {
 		return nil
 	}
-	res := &service_result_with_collectionpb.ResultT{}
-	if v.CollectionField != nil {
-		res.CollectionField = &service_result_with_collectionpb.RTCollection{}
-		res.CollectionField.Field = make([]*service_result_with_collectionpb.RT, len(v.CollectionField))
-		for i, val := range v.CollectionField {
-			res.CollectionField.Field[i] = &service_result_with_collectionpb.RT{}
+	res := &service_result_with_listpb.ResultT{}
+	if v.ListField != nil {
+		res.ListField = &service_result_with_listpb.RTList{}
+		res.ListField.Field = make([]*service_result_with_listpb.RT, len(v.ListField))
+		for i, val := range v.ListField {
+			res.ListField.Field[i] = &service_result_with_listpb.RT{}
 			if val.IntField != nil {
-				res.CollectionField.Field[i].IntField = int32(*val.IntField)
+				res.ListField.Field[i].IntField = int32(*val.IntField)
 			}
 		}
 	}
@@ -204,21 +204,21 @@ func svcServiceresultwithcollectionResultTToServiceResultWithCollectionpbResultT
 	return res
 }
 
-// protobufServiceResultWithCollectionpbResultTToServiceresultwithcollectionResultT
-// builds a value of type *serviceresultwithcollection.ResultT from a value of
-// type *service_result_with_collectionpb.ResultT.
-func protobufServiceResultWithCollectionpbResultTToServiceresultwithcollectionResultT(v *service_result_with_collectionpb.ResultT) *serviceresultwithcollection.ResultT {
+// protobufServiceResultWithListpbResultTToServiceresultwithlistResultT
+// builds a value of type *serviceresultwithlist.ResultT from a value of
+// type *service_result_with_listpb.ResultT.
+func protobufServiceResultWithListpbResultTToServiceresultwithlistResultT(v *service_result_with_listpb.ResultT) *serviceresultwithlist.ResultT {
 	if v == nil {
 		return nil
 	}
-	res := &serviceresultwithcollection.ResultT{}
-	if v.CollectionField != nil {
-		res.CollectionField = make([]*serviceresultwithcollection.RT, len(v.CollectionField.Field))
-		for i, val := range v.CollectionField.Field {
-			res.CollectionField[i] = &serviceresultwithcollection.RT{}
+	res := &serviceresultwithlist.ResultT{}
+	if v.ListField != nil {
+		res.ListField = make([]*serviceresultwithlist.RT, len(v.ListField.Field))
+		for i, val := range v.ListField.Field {
+			res.ListField[i] = &serviceresultwithlist.RT{}
 			if val.IntField != 0 {
 				intFieldptr := int(val.IntField)
-				res.CollectionField[i].IntField = &intFieldptr
+				res.ListField[i].IntField = &intFieldptr
 			}
 		}
 	}

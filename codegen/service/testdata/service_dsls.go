@@ -308,7 +308,7 @@ var WithExplicitAndDefaultViewsDSL = func() {
 	})
 }
 
-var ResultCollectionMultipleViewsMethodDSL = func() {
+var ResultListMultipleViewsMethodDSL = func() {
 	var RTWithViews = ResultType("application/vnd.result.multiple.views", func() {
 		TypeName("MultipleViews")
 		Attributes(func() {
@@ -324,9 +324,9 @@ var ResultCollectionMultipleViewsMethodDSL = func() {
 			Attribute("a")
 		})
 	})
-	Service("ResultCollectionMultipleViewsMethod", func() {
+	Service("ResultListMultipleViewsMethod", func() {
 		Method("A", func() {
-			Result(CollectionOf(RTWithViews))
+			Result(ListOf(RTWithViews))
 		})
 	})
 }
@@ -369,7 +369,7 @@ var ResultWithOtherResultMethodDSL = func() {
 	})
 }
 
-var ResultWithResultCollectionMethodDSL = func() {
+var ResultWithResultListMethodDSL = func() {
 	var RT2 = ResultType("application/vnd.result.2", func() {
 		TypeName("RT2")
 		Attributes(func() {
@@ -394,7 +394,7 @@ var ResultWithResultCollectionMethodDSL = func() {
 	var RT = ResultType("application/vnd.result", func() {
 		TypeName("RT")
 		Attributes(func() {
-			Field(1, "a", CollectionOf(RT2))
+			Field(1, "a", ListOf(RT2))
 		})
 		View("default", func() {
 			Attribute("a")
@@ -410,7 +410,7 @@ var ResultWithResultCollectionMethodDSL = func() {
 			})
 		})
 	})
-	Service("ResultWithResultTypeCollection", func() {
+	Service("ResultWithResultTypeList", func() {
 		Method("A", func() {
 			Result(RT)
 		})
@@ -429,7 +429,7 @@ var ResultWithDashedMimeTypeMethodDSL = func() {
 		})
 		Method("list", func() {
 			Result(func() {
-				Attribute("items", CollectionOf(RT))
+				Attribute("items", ListOf(RT))
 			})
 		})
 	})

@@ -230,11 +230,11 @@ func DecodeMethodExplicitBodyUserResultMultipleViewResponse(decoder func(*http.R
 }
 `
 
-var ExplicitBodyResultCollectionDecodeCode = `// DecodeMethodExplicitBodyResultCollectionResponse returns a decoder for
-// responses returned by the ServiceExplicitBodyResultCollection
-// MethodExplicitBodyResultCollection endpoint. restoreBody controls whether
+var ExplicitBodyResultListDecodeCode = `// DecodeMethodExplicitBodyResultListResponse returns a decoder for
+// responses returned by the ServiceExplicitBodyResultList
+// MethodExplicitBodyResultList endpoint. restoreBody controls whether
 // the response body should be restored after having been read.
-func DecodeMethodExplicitBodyResultCollectionResponse(decoder func(*http.Response) goahttp.Decoder, restoreBody bool) func(*http.Response) (interface{}, error) {
+func DecodeMethodExplicitBodyResultListResponse(decoder func(*http.Response) goahttp.Decoder, restoreBody bool) func(*http.Response) (interface{}, error) {
 	return func(resp *http.Response) (interface{}, error) {
 		if restoreBody {
 			b, err := io.ReadAll(resp.Body)
@@ -251,22 +251,22 @@ func DecodeMethodExplicitBodyResultCollectionResponse(decoder func(*http.Respons
 		switch resp.StatusCode {
 		case http.StatusOK:
 			var (
-				body ResulttypeCollection
+				body ResulttypeList
 				err  error
 			)
 			err = decoder(resp).Decode(&body)
 			if err != nil {
-				return nil, goahttp.ErrDecodingError("ServiceExplicitBodyResultCollection", "MethodExplicitBodyResultCollection", err)
+				return nil, goahttp.ErrDecodingError("ServiceExplicitBodyResultList", "MethodExplicitBodyResultList", err)
 			}
-			err = ValidateResulttypeCollection(body)
+			err = ValidateResulttypeList(body)
 			if err != nil {
-				return nil, goahttp.ErrValidationError("ServiceExplicitBodyResultCollection", "MethodExplicitBodyResultCollection", err)
+				return nil, goahttp.ErrValidationError("ServiceExplicitBodyResultList", "MethodExplicitBodyResultList", err)
 			}
-			res := NewMethodExplicitBodyResultCollectionResultOK(body)
+			res := NewMethodExplicitBodyResultListResultOK(body)
 			return res, nil
 		default:
 			body, _ := io.ReadAll(resp.Body)
-			return nil, goahttp.ErrInvalidResponse("ServiceExplicitBodyResultCollection", "MethodExplicitBodyResultCollection", resp.StatusCode, string(body))
+			return nil, goahttp.ErrInvalidResponse("ServiceExplicitBodyResultList", "MethodExplicitBodyResultList", resp.StatusCode, string(body))
 		}
 	}
 }

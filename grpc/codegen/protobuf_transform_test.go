@@ -39,7 +39,7 @@ func TestProtoBufTransform(t *testing.T) {
 		defaults    = root.UserType("WithDefaults")
 
 		resultType = root.UserType("ResultType")
-		rtCol      = root.UserType("ResultTypeCollection")
+		rtCol      = root.UserType("ResultTypeList")
 
 		simpleOneOf    = root.UserType("SimpleOneOf")
 		embeddedOneOf  = root.UserType("EmbeddedOneOf")
@@ -88,7 +88,7 @@ func TestProtoBufTransform(t *testing.T) {
 			{"composite-to-custom-field", composite, customField, true, svcCtx, compositeSvcToCustomFieldProtoCode},
 			{"custom-field-to-composite", customField, composite, true, svcCtx, customFieldSvcToCompositeProtoCode},
 			{"result-type-to-result-type", resultType, resultType, true, svcCtx, resultTypeSvcToResultTypeProtoCode},
-			{"result-type-collection-to-result-type-collection", rtCol, rtCol, true, svcCtx, rtColSvcToRTColProtoCode},
+			{"result-type-list-to-result-type-list", rtCol, rtCol, true, svcCtx, rtColSvcToRTColProtoCode},
 			{"optional-to-optional", optional, optional, true, svcCtx, optionalSvcToOptionalProtoCode},
 			{"defaults-to-defaults", defaults, defaults, true, svcCtx, defaultsSvcToDefaultsProtoCode},
 
@@ -127,7 +127,7 @@ func TestProtoBufTransform(t *testing.T) {
 			{"composite-to-custom-field", composite, customField, false, svcCtx, compositeProtoToCustomFieldSvcCode},
 			{"custom-field-to-composite", customField, composite, false, svcCtx, customFieldProtoToCompositeSvcCode},
 			{"result-type-to-result-type", resultType, resultType, false, svcCtx, resultTypeProtoToResultTypeSvcCode},
-			{"result-type-collection-to-result-type-collection", rtCol, rtCol, false, svcCtx, rtColProtoToRTColSvcCode},
+			{"result-type-list-to-result-type-list", rtCol, rtCol, false, svcCtx, rtColProtoToRTColSvcCode},
 			{"optional-to-optional", optional, optional, false, svcCtx, optionalProtoToOptionalSvcCode},
 			{"defaults-to-defaults", defaults, defaults, false, svcCtx, defaultsProtoToDefaultsSvcCode},
 
@@ -515,21 +515,21 @@ const (
 `
 
 	rtColSvcToRTColProtoCode = `func transform() {
-	target := &ResultTypeCollection{}
-	if source.Collection != nil {
-		target.Collection = &ResultTypeCollection{}
-		target.Collection.Field = make([]*ResultType, len(source.Collection))
-		for i, val := range source.Collection {
-			target.Collection.Field[i] = &ResultType{}
+	target := &ResultTypeList{}
+	if source.List != nil {
+		target.List = &ResultTypeList{}
+		target.List.Field = make([]*ResultType, len(source.List))
+		for i, val := range source.List {
+			target.List.Field[i] = &ResultType{}
 			if val.Int != nil {
-				target.Collection.Field[i].Int = int32(*val.Int)
+				target.List.Field[i].Int = int32(*val.Int)
 			}
 			if val.Map != nil {
-				target.Collection.Field[i].Map_ = make(map[int32]string, len(val.Map))
+				target.List.Field[i].Map_ = make(map[int32]string, len(val.Map))
 				for key, val := range val.Map {
 					tk := int32(key)
 					tv := val
-					target.Collection.Field[i].Map_[tk] = tv
+					target.List.Field[i].Map_[tk] = tv
 				}
 			}
 		}
@@ -975,21 +975,21 @@ const (
 `
 
 	rtColProtoToRTColSvcCode = `func transform() {
-	target := &ResultTypeCollection{}
-	if source.Collection != nil {
-		target.Collection = make([]*ResultType, len(source.Collection.Field))
-		for i, val := range source.Collection.Field {
-			target.Collection[i] = &ResultType{}
+	target := &ResultTypeList{}
+	if source.List != nil {
+		target.List = make([]*ResultType, len(source.List.Field))
+		for i, val := range source.List.Field {
+			target.List[i] = &ResultType{}
 			if val.Int != 0 {
 				int_ptr := int(val.Int)
-				target.Collection[i].Int = &int_ptr
+				target.List[i].Int = &int_ptr
 			}
 			if val.Map_ != nil {
-				target.Collection[i].Map = make(map[int]string, len(val.Map_))
+				target.List[i].Map = make(map[int]string, len(val.Map_))
 				for key, val := range val.Map_ {
 					tk := int(key)
 					tv := val
-					target.Collection[i].Map[tk] = tv
+					target.List[i].Map[tk] = tv
 				}
 			}
 		}

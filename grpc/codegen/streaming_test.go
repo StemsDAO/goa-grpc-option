@@ -49,10 +49,10 @@ func TestStreaming(t *testing.T) {
 			{"client-stream-recv", &testdata.ServerStreamingResultWithViewsClientRecvCode},
 			{"client-stream-set-view", &testdata.ServerStreamingResultWithViewsClientSetViewCode},
 		}},
-		{"server-streaming-result-collection-with-explicit-views", testdata.ServerStreamingResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"server-stream-send", &testdata.ServerStreamingResultCollectionWithExplicitViewServerSendCode},
+		{"server-streaming-result-list-with-explicit-views", testdata.ServerStreamingResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"server-stream-send", &testdata.ServerStreamingResultListWithExplicitViewServerSendCode},
 			{"server-stream-set-view", nil},
-			{"client-stream-recv", &testdata.ServerStreamingResultCollectionWithExplicitViewClientRecvCode},
+			{"client-stream-recv", &testdata.ServerStreamingResultListWithExplicitViewClientRecvCode},
 			{"client-stream-set-view", nil},
 		}},
 		{"server-streaming-primitive", testdata.ServerStreamingRPCDSL, []*sectionExpectation{

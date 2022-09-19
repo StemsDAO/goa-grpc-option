@@ -202,7 +202,7 @@ var ServerStreamingResultWithViewsDSL = func() {
 	})
 }
 
-var ServerStreamingResultCollectionWithExplicitViewDSL = func() {
+var ServerStreamingResultListWithExplicitViewDSL = func() {
 	var RT = ResultType("application/vnd.result", func() {
 		TypeName("ResultType")
 		Attributes(func() {
@@ -217,9 +217,9 @@ var ServerStreamingResultCollectionWithExplicitViewDSL = func() {
 			Attribute("IntField")
 		})
 	})
-	Service("ServiceServerStreamingResultTypeCollectionWithExplicitView", func() {
-		Method("MethodServerStreamingResultTypeCollectionWithExplicitView", func() {
-			StreamingResult(CollectionOf(RT), func() {
+	Service("ServiceServerStreamingResultTypeListWithExplicitView", func() {
+		Method("MethodServerStreamingResultTypeListWithExplicitView", func() {
+			StreamingResult(ListOf(RT), func() {
 				View("tiny")
 			})
 			GRPC(func() {})
@@ -459,7 +459,7 @@ var MessageResultTypeWithExplicitViewDSL = func() {
 	})
 }
 
-var MessageResultTypeCollectionDSL = func() {
+var MessageResultTypeListDSL = func() {
 	var RT = ResultType("application/vnd.goa.rt", func() {
 		TypeName("RT")
 		Attributes(func() {
@@ -476,13 +476,13 @@ var MessageResultTypeCollectionDSL = func() {
 	})
 	Service("ServiceMessageUserTypeWithNestedUserTypes", func() {
 		Method("MethodMessageUserTypeWithNestedUserTypes", func() {
-			Result(CollectionOf(RT))
+			Result(ListOf(RT))
 			GRPC(func() {})
 		})
 	})
 }
 
-var MessageUserTypeWithCollectionDSL = func() {
+var MessageUserTypeWithListDSL = func() {
 	var RT = ResultType("application/vnd.goa.rt", func() {
 		TypeName("RT")
 		Attributes(func() {
@@ -494,7 +494,7 @@ var MessageUserTypeWithCollectionDSL = func() {
 	var ResultT = ResultType("application/vnd.goa.resultt", func() {
 		TypeName("ResultT")
 		Attributes(func() {
-			Attribute("CollectionField", CollectionOf(RT), func() {
+			Attribute("ListField", ListOf(RT), func() {
 				Meta("rpc:tag", "1")
 			})
 		})
@@ -507,7 +507,7 @@ var MessageUserTypeWithCollectionDSL = func() {
 	})
 }
 
-var ResultWithCollectionDSL = func() {
+var ResultWithListDSL = func() {
 	var RT = ResultType("application/vnd.goa.rt", func() {
 		TypeName("RT")
 		Attributes(func() {
@@ -519,13 +519,13 @@ var ResultWithCollectionDSL = func() {
 	var ResultT = ResultType("application/vnd.goa.resultt", func() {
 		TypeName("ResultT")
 		Attributes(func() {
-			Attribute("CollectionField", CollectionOf(RT), func() {
+			Attribute("ListField", ListOf(RT), func() {
 				Meta("rpc:tag", "1")
 			})
 		})
 	})
-	Service("ServiceResultWithCollection", func() {
-		Method("MethodResultWithCollection", func() {
+	Service("ServiceResultWithList", func() {
+		Method("MethodResultWithList", func() {
 			Result(func() {
 				Field(1, "result", ResultT)
 			})
@@ -805,18 +805,18 @@ var MethodWithReservedNameDSL = func() {
 	})
 }
 
-var MultipleMethodsSameResultCollectionDSL = func() {
+var MultipleMethodsSameResultListDSL = func() {
 	var ResultT = ResultType("application/vnd.goa.result", func() {
 		TypeName("ResultT")
 		Field(1, "BooleanField", Boolean)
 	})
-	Service("MultipleMethodsSameResultCollection", func() {
+	Service("MultipleMethodsSameResultList", func() {
 		Method("method_a", func() {
-			Result(CollectionOf(ResultT))
+			Result(ListOf(ResultT))
 			GRPC(func() {})
 		})
 		Method("method_b", func() {
-			Result(CollectionOf(ResultT))
+			Result(ListOf(ResultT))
 			GRPC(func() {})
 		})
 	})

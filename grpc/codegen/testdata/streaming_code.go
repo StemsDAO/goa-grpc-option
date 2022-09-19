@@ -102,33 +102,33 @@ func (s *MethodServerStreamingUserTypeRPCClientStream) SetView(view string) {
 }
 `
 
-var ServerStreamingResultCollectionWithExplicitViewServerSendCode = `// Send streams instances of
-// "service_server_streaming_result_type_collection_with_explicit_viewpb.ResultTypeCollection"
-// to the "MethodServerStreamingResultTypeCollectionWithExplicitView" endpoint
+var ServerStreamingResultListWithExplicitViewServerSendCode = `// Send streams instances of
+// "service_server_streaming_result_type_list_with_explicit_viewpb.ResultTypeList"
+// to the "MethodServerStreamingResultTypeListWithExplicitView" endpoint
 // gRPC stream.
-func (s *MethodServerStreamingResultTypeCollectionWithExplicitViewServerStream) Send(res serviceserverstreamingresulttypecollectionwithexplicitview.ResultTypeCollection) error {
-	vres := serviceserverstreamingresulttypecollectionwithexplicitview.NewViewedResultTypeCollection(res, "tiny")
-	v := NewProtoResultTypeCollection(vres.Projected)
+func (s *MethodServerStreamingResultTypeListWithExplicitViewServerStream) Send(res serviceserverstreamingresulttypelistwithexplicitview.ResultTypeList) error {
+	vres := serviceserverstreamingresulttypelistwithexplicitview.NewViewedResultTypeList(res, "tiny")
+	v := NewProtoResultTypeList(vres.Projected)
 	return s.stream.Send(v)
 }
 `
 
-var ServerStreamingResultCollectionWithExplicitViewClientRecvCode = `// Recv reads instances of
-// "service_server_streaming_result_type_collection_with_explicit_viewpb.ResultTypeCollection"
-// from the "MethodServerStreamingResultTypeCollectionWithExplicitView"
+var ServerStreamingResultListWithExplicitViewClientRecvCode = `// Recv reads instances of
+// "service_server_streaming_result_type_list_with_explicit_viewpb.ResultTypeList"
+// from the "MethodServerStreamingResultTypeListWithExplicitView"
 // endpoint gRPC stream.
-func (s *MethodServerStreamingResultTypeCollectionWithExplicitViewClientStream) Recv() (serviceserverstreamingresulttypecollectionwithexplicitview.ResultTypeCollection, error) {
-	var res serviceserverstreamingresulttypecollectionwithexplicitview.ResultTypeCollection
+func (s *MethodServerStreamingResultTypeListWithExplicitViewClientStream) Recv() (serviceserverstreamingresulttypelistwithexplicitview.ResultTypeList, error) {
+	var res serviceserverstreamingresulttypelistwithexplicitview.ResultTypeList
 	v, err := s.stream.Recv()
 	if err != nil {
 		return res, err
 	}
-	proj := NewResultTypeCollection(v)
-	vres := serviceserverstreamingresulttypecollectionwithexplicitviewviews.ResultTypeCollection{Projected: proj, View: "tiny"}
-	if err := serviceserverstreamingresulttypecollectionwithexplicitviewviews.ValidateResultTypeCollection(vres); err != nil {
+	proj := NewResultTypeList(v)
+	vres := serviceserverstreamingresulttypelistwithexplicitviewviews.ResultTypeList{Projected: proj, View: "tiny"}
+	if err := serviceserverstreamingresulttypelistwithexplicitviewviews.ValidateResultTypeList(vres); err != nil {
 		return nil, err
 	}
-	return serviceserverstreamingresulttypecollectionwithexplicitview.NewResultTypeCollection(vres), nil
+	return serviceserverstreamingresulttypelistwithexplicitview.NewResultTypeList(vres), nil
 }
 `
 

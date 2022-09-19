@@ -168,7 +168,7 @@ func DecodeMethodMessageWithValidateResponse(ctx context.Context, v interface{},
 }
 `
 
-const ResultCollectionResponseDecoderCode = `// DecodeMethodMessageUserTypeWithNestedUserTypesResponse decodes responses
+const ResultListResponseDecoderCode = `// DecodeMethodMessageUserTypeWithNestedUserTypesResponse decodes responses
 // from the ServiceMessageUserTypeWithNestedUserTypes
 // MethodMessageUserTypeWithNestedUserTypes endpoint.
 func DecodeMethodMessageUserTypeWithNestedUserTypesResponse(ctx context.Context, v interface{}, hdr, trlr metadata.MD) (interface{}, error) {
@@ -178,16 +178,16 @@ func DecodeMethodMessageUserTypeWithNestedUserTypesResponse(ctx context.Context,
 			view = vals[0]
 		}
 	}
-	message, ok := v.(*service_message_user_type_with_nested_user_typespb.RTCollection)
+	message, ok := v.(*service_message_user_type_with_nested_user_typespb.RTList)
 	if !ok {
-		return nil, goagrpc.ErrInvalidType("ServiceMessageUserTypeWithNestedUserTypes", "MethodMessageUserTypeWithNestedUserTypes", "*service_message_user_type_with_nested_user_typespb.RTCollection", v)
+		return nil, goagrpc.ErrInvalidType("ServiceMessageUserTypeWithNestedUserTypes", "MethodMessageUserTypeWithNestedUserTypes", "*service_message_user_type_with_nested_user_typespb.RTList", v)
 	}
 	res := NewMethodMessageUserTypeWithNestedUserTypesResult(message)
-	vres := servicemessageusertypewithnestedusertypesviews.RTCollection{Projected: res, View: view}
-	if err := servicemessageusertypewithnestedusertypesviews.ValidateRTCollection(vres); err != nil {
+	vres := servicemessageusertypewithnestedusertypesviews.RTList{Projected: res, View: view}
+	if err := servicemessageusertypewithnestedusertypesviews.ValidateRTList(vres); err != nil {
 		return nil, err
 	}
-	return servicemessageusertypewithnestedusertypes.NewRTCollection(vres), nil
+	return servicemessageusertypewithnestedusertypes.NewRTList(vres), nil
 }
 `
 

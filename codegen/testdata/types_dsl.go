@@ -172,10 +172,10 @@ var TestTypesDSL = func() {
 			})
 		})
 
-		_ = ResultType("application/vnd.goa.collection", func() {
-			TypeName("ResultTypeCollection")
+		_ = ResultType("application/vnd.goa.list", func() {
+			TypeName("ResultTypeList")
 			Attributes(func() {
-				Attribute("collection", CollectionOf(RT))
+				Attribute("list", ListOf(RT))
 			})
 		})
 

@@ -19,7 +19,7 @@ func TestClientDecode(t *testing.T) {
 		{"empty-body-result-multiple-views", testdata.EmptyBodyResultMultipleViewsDSL, testdata.EmptyBodyResultMultipleViewsDecodeCode},
 		{"explicit-body-primitive-result", testdata.ExplicitBodyPrimitiveResultMultipleViewsDSL, testdata.ExplicitBodyPrimitiveResultDecodeCode},
 		{"explicit-body-result-multiple-views", testdata.ExplicitBodyUserResultMultipleViewsDSL, testdata.ExplicitBodyUserResultMultipleViewsDecodeCode},
-		{"explicit-body-result-collection", testdata.ExplicitBodyResultCollectionDSL, testdata.ExplicitBodyResultCollectionDecodeCode},
+		{"explicit-body-result-list", testdata.ExplicitBodyResultListDSL, testdata.ExplicitBodyResultListDecodeCode},
 		{"tag-result-multiple-views", testdata.ResultMultipleViewsTagDSL, testdata.ResultMultipleViewsTagDecodeCode},
 		{"empty-server-response-with-tags", testdata.EmptyServerResponseWithTagsDSL, testdata.EmptyServerResponseWithTagsDecodeCode},
 		{"header-string-implicit", testdata.ResultHeaderStringImplicitDSL, testdata.ResultHeaderStringImplicitResponseDecodeCode},

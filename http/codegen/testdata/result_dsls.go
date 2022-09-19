@@ -679,8 +679,8 @@ var ResultBodyMultipleViewsDSL = func() {
 	})
 }
 
-var ResultBodyCollectionDSL = func() {
-	var RT = ResultType("ResultTypeCollection", func() {
+var ResultBodyListDSL = func() {
+	var RT = ResultType("ResultTypeList", func() {
 		Attributes(func() {
 			Attribute("a", String)
 			Attribute("b", String)
@@ -695,9 +695,9 @@ var ResultBodyCollectionDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("ServiceBodyCollection", func() {
-		Method("MethodBodyCollection", func() {
-			Result(CollectionOf(RT))
+	Service("ServiceBodyList", func() {
+		Method("MethodBodyList", func() {
+			Result(ListOf(RT))
 			HTTP(func() {
 				POST("/")
 				Response(StatusOK)
@@ -706,8 +706,8 @@ var ResultBodyCollectionDSL = func() {
 	})
 }
 
-var ResultBodyCollectionExplicitViewDSL = func() {
-	var RT = ResultType("ResultTypeCollection", func() {
+var ResultBodyListExplicitViewDSL = func() {
+	var RT = ResultType("ResultTypeList", func() {
 		Attributes(func() {
 			Attribute("a", String)
 			Attribute("b", String)
@@ -722,9 +722,9 @@ var ResultBodyCollectionExplicitViewDSL = func() {
 			Attribute("c")
 		})
 	})
-	Service("ServiceBodyCollectionExplicitView", func() {
-		Method("MethodBodyCollectionExplicitView", func() {
-			Result(CollectionOf(RT), func() {
+	Service("ServiceBodyListExplicitView", func() {
+		Method("MethodBodyListExplicitView", func() {
+			Result(ListOf(RT), func() {
 				View("tiny")
 			})
 			HTTP(func() {
@@ -735,7 +735,7 @@ var ResultBodyCollectionExplicitViewDSL = func() {
 	})
 }
 
-var ResultWithResultCollectionDSL = func() {
+var ResultWithResultListDSL = func() {
 	var RT = ResultType("RT", func() {
 		Attributes(func() {
 			Attribute("x", String, func() {
@@ -745,11 +745,11 @@ var ResultWithResultCollectionDSL = func() {
 	})
 	var ResultType = ResultType("ResultType", func() {
 		Attributes(func() {
-			Attribute("x", CollectionOf(RT))
+			Attribute("x", ListOf(RT))
 		})
 	})
-	Service("ServiceResultWithResultCollection", func() {
-		Method("MethodResultWithResultCollection", func() {
+	Service("ServiceResultWithResultList", func() {
+		Method("MethodResultWithResultList", func() {
 			Result(func() {
 				Attribute("a", ResultType)
 			})
@@ -1094,7 +1094,7 @@ var ExplicitBodyUserResultObjectMultipleViewDSL = func() {
 	})
 }
 
-var ExplicitBodyResultCollectionDSL = func() {
+var ExplicitBodyResultListDSL = func() {
 	var ResultType = ResultType("ResultType", func() {
 		Attributes(func() {
 			Attribute("x", String, func() {
@@ -1102,10 +1102,10 @@ var ExplicitBodyResultCollectionDSL = func() {
 			})
 		})
 	})
-	Service("ServiceExplicitBodyResultCollection", func() {
-		Method("MethodExplicitBodyResultCollection", func() {
+	Service("ServiceExplicitBodyResultList", func() {
+		Method("MethodExplicitBodyResultList", func() {
 			Result(func() {
-				Attribute("a", CollectionOf(ResultType))
+				Attribute("a", ListOf(ResultType))
 			})
 			HTTP(func() {
 				POST("/")

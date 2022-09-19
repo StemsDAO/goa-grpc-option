@@ -51,12 +51,12 @@ func TestServerStreaming(t *testing.T) {
 			{"server-websocket-send", &testdata.StreamingResultWithExplicitViewServerStreamSendCode},
 			{"server-websocket-set-view", nil},
 		}},
-		{"streaming-result-collection-with-views", testdata.StreamingResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.StreamingResultCollectionWithViewsServerStreamSendCode},
-			{"server-websocket-set-view", &testdata.StreamingResultCollectionWithViewsServerStreamSetViewCode},
+		{"streaming-result-list-with-views", testdata.StreamingResultListWithViewsDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.StreamingResultListWithViewsServerStreamSendCode},
+			{"server-websocket-set-view", &testdata.StreamingResultListWithViewsServerStreamSetViewCode},
 		}},
-		{"streaming-result-collection-with-explicit-view", testdata.StreamingResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.StreamingResultCollectionWithExplicitViewServerStreamSendCode},
+		{"streaming-result-list-with-explicit-view", testdata.StreamingResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.StreamingResultListWithExplicitViewServerStreamSendCode},
 			{"server-websocket-set-view", nil},
 		}},
 		{"streaming-result-primitive", testdata.StreamingResultPrimitiveDSL, []*sectionExpectation{
@@ -109,14 +109,14 @@ func TestServerStreaming(t *testing.T) {
 			{"server-websocket-recv", &testdata.StreamingPayloadResultWithExplicitViewServerStreamRecvCode},
 			{"server-websocket-set-view", nil},
 		}},
-		{"streaming-payload-result-collection-with-views", testdata.StreamingPayloadResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.StreamingPayloadResultCollectionWithViewsServerStreamSendCode},
-			{"server-websocket-recv", &testdata.StreamingPayloadResultCollectionWithViewsServerStreamRecvCode},
-			{"server-websocket-set-view", &testdata.StreamingPayloadResultCollectionWithViewsServerStreamSetViewCode},
+		{"streaming-payload-result-list-with-views", testdata.StreamingPayloadResultListWithViewsDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.StreamingPayloadResultListWithViewsServerStreamSendCode},
+			{"server-websocket-recv", &testdata.StreamingPayloadResultListWithViewsServerStreamRecvCode},
+			{"server-websocket-set-view", &testdata.StreamingPayloadResultListWithViewsServerStreamSetViewCode},
 		}},
-		{"streaming-payload-result-collection-with-explicit-view", testdata.StreamingPayloadResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.StreamingPayloadResultCollectionWithExplicitViewServerStreamSendCode},
-			{"server-websocket-recv", &testdata.StreamingPayloadResultCollectionWithExplicitViewServerStreamRecvCode},
+		{"streaming-payload-result-list-with-explicit-view", testdata.StreamingPayloadResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.StreamingPayloadResultListWithExplicitViewServerStreamSendCode},
+			{"server-websocket-recv", &testdata.StreamingPayloadResultListWithExplicitViewServerStreamRecvCode},
 			{"server-websocket-set-view", nil},
 		}},
 		{"streaming-payload-primitive", testdata.StreamingPayloadPrimitiveDSL, []*sectionExpectation{
@@ -165,14 +165,14 @@ func TestServerStreaming(t *testing.T) {
 			{"server-websocket-recv", &testdata.BidirectionalStreamingResultWithExplicitViewServerStreamRecvCode},
 			{"server-websocket-set-view", nil},
 		}},
-		{"bidirectional-streaming-result-collection-with-views", testdata.BidirectionalStreamingResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.BidirectionalStreamingResultCollectionWithViewsServerStreamSendCode},
-			{"server-websocket-recv", &testdata.BidirectionalStreamingResultCollectionWithViewsServerStreamRecvCode},
-			{"server-websocket-set-view", &testdata.BidirectionalStreamingResultCollectionWithViewsServerStreamSetViewCode},
+		{"bidirectional-streaming-result-list-with-views", testdata.BidirectionalStreamingResultListWithViewsDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.BidirectionalStreamingResultListWithViewsServerStreamSendCode},
+			{"server-websocket-recv", &testdata.BidirectionalStreamingResultListWithViewsServerStreamRecvCode},
+			{"server-websocket-set-view", &testdata.BidirectionalStreamingResultListWithViewsServerStreamSetViewCode},
 		}},
-		{"bidirectional-streaming-result-collection-with-explicit-view", testdata.BidirectionalStreamingResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"server-websocket-send", &testdata.BidirectionalStreamingResultCollectionWithExplicitViewServerStreamSendCode},
-			{"server-websocket-recv", &testdata.BidirectionalStreamingResultCollectionWithExplicitViewServerStreamRecvCode},
+		{"bidirectional-streaming-result-list-with-explicit-view", testdata.BidirectionalStreamingResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"server-websocket-send", &testdata.BidirectionalStreamingResultListWithExplicitViewServerStreamSendCode},
+			{"server-websocket-recv", &testdata.BidirectionalStreamingResultListWithExplicitViewServerStreamRecvCode},
 			{"server-websocket-set-view", nil},
 		}},
 		{"bidirectional-streaming-primitive", testdata.BidirectionalStreamingPrimitiveDSL, []*sectionExpectation{
@@ -227,13 +227,13 @@ func TestClientStreaming(t *testing.T) {
 			{"client-websocket-recv", &testdata.StreamingResultWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
-		{"streaming-result-collection-with-views", testdata.StreamingResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"client-websocket-recv", &testdata.StreamingResultCollectionWithViewsClientStreamRecvCode},
-			{"client-websocket-set-view", &testdata.StreamingResultCollectionWithViewsClientStreamSetViewCode},
+		{"streaming-result-list-with-views", testdata.StreamingResultListWithViewsDSL, []*sectionExpectation{
+			{"client-websocket-recv", &testdata.StreamingResultListWithViewsClientStreamRecvCode},
+			{"client-websocket-set-view", &testdata.StreamingResultListWithViewsClientStreamSetViewCode},
 		}},
-		{"streaming-result-collection-with-explicit-view", testdata.StreamingResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"client-endpoint-init", &testdata.StreamingResultCollectionWithExplicitViewClientEndpointCode},
-			{"client-websocket-recv", &testdata.StreamingResultCollectionWithExplicitViewClientStreamRecvCode},
+		{"streaming-result-list-with-explicit-view", testdata.StreamingResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"client-endpoint-init", &testdata.StreamingResultListWithExplicitViewClientEndpointCode},
+			{"client-websocket-recv", &testdata.StreamingResultListWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
 		{"streaming-result-primitive", testdata.StreamingResultPrimitiveDSL, []*sectionExpectation{
@@ -288,14 +288,14 @@ func TestClientStreaming(t *testing.T) {
 			{"client-websocket-recv", &testdata.StreamingPayloadResultWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
-		{"streaming-payload-result-collection-with-views", testdata.StreamingPayloadResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"client-websocket-send", &testdata.StreamingPayloadResultCollectionWithViewsClientStreamSendCode},
-			{"client-websocket-recv", &testdata.StreamingPayloadResultCollectionWithViewsClientStreamRecvCode},
-			{"client-websocket-set-view", &testdata.StreamingPayloadResultCollectionWithViewsClientStreamSetViewCode},
+		{"streaming-payload-result-list-with-views", testdata.StreamingPayloadResultListWithViewsDSL, []*sectionExpectation{
+			{"client-websocket-send", &testdata.StreamingPayloadResultListWithViewsClientStreamSendCode},
+			{"client-websocket-recv", &testdata.StreamingPayloadResultListWithViewsClientStreamRecvCode},
+			{"client-websocket-set-view", &testdata.StreamingPayloadResultListWithViewsClientStreamSetViewCode},
 		}},
-		{"streaming-payload-result-collection-with-explicit-view", testdata.StreamingPayloadResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"client-websocket-send", &testdata.StreamingPayloadResultCollectionWithExplicitViewClientStreamSendCode},
-			{"client-websocket-recv", &testdata.StreamingPayloadResultCollectionWithExplicitViewClientStreamRecvCode},
+		{"streaming-payload-result-list-with-explicit-view", testdata.StreamingPayloadResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"client-websocket-send", &testdata.StreamingPayloadResultListWithExplicitViewClientStreamSendCode},
+			{"client-websocket-recv", &testdata.StreamingPayloadResultListWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
 		{"streaming-payload-primitive", testdata.StreamingPayloadPrimitiveDSL, []*sectionExpectation{
@@ -346,14 +346,14 @@ func TestClientStreaming(t *testing.T) {
 			{"client-websocket-recv", &testdata.BidirectionalStreamingResultWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
-		{"bidirectional-streaming-result-collection-with-views", testdata.BidirectionalStreamingResultCollectionWithViewsDSL, []*sectionExpectation{
-			{"client-websocket-send", &testdata.BidirectionalStreamingResultCollectionWithViewsClientStreamSendCode},
-			{"client-websocket-recv", &testdata.BidirectionalStreamingResultCollectionWithViewsClientStreamRecvCode},
-			{"client-websocket-set-view", &testdata.BidirectionalStreamingResultCollectionWithViewsClientStreamSetViewCode},
+		{"bidirectional-streaming-result-list-with-views", testdata.BidirectionalStreamingResultListWithViewsDSL, []*sectionExpectation{
+			{"client-websocket-send", &testdata.BidirectionalStreamingResultListWithViewsClientStreamSendCode},
+			{"client-websocket-recv", &testdata.BidirectionalStreamingResultListWithViewsClientStreamRecvCode},
+			{"client-websocket-set-view", &testdata.BidirectionalStreamingResultListWithViewsClientStreamSetViewCode},
 		}},
-		{"bidirectional-streaming-result-collection-with-explicit-view", testdata.BidirectionalStreamingResultCollectionWithExplicitViewDSL, []*sectionExpectation{
-			{"client-websocket-send", &testdata.BidirectionalStreamingResultCollectionWithExplicitViewClientStreamSendCode},
-			{"client-websocket-recv", &testdata.BidirectionalStreamingResultCollectionWithExplicitViewClientStreamRecvCode},
+		{"bidirectional-streaming-result-list-with-explicit-view", testdata.BidirectionalStreamingResultListWithExplicitViewDSL, []*sectionExpectation{
+			{"client-websocket-send", &testdata.BidirectionalStreamingResultListWithExplicitViewClientStreamSendCode},
+			{"client-websocket-recv", &testdata.BidirectionalStreamingResultListWithExplicitViewClientStreamRecvCode},
 			{"client-websocket-set-view", nil},
 		}},
 		{"bidirectional-streaming-primitive", testdata.BidirectionalStreamingPrimitiveDSL, []*sectionExpectation{

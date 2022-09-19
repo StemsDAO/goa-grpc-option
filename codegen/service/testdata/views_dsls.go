@@ -27,7 +27,7 @@ var ResultWithMultipleViewsDSL = func() {
 	})
 }
 
-var ResultCollectionMultipleViewsDSL = func() {
+var ResultListMultipleViewsDSL = func() {
 	var RT = ResultType("application/vnd.result", func() {
 		TypeName("ResultType")
 		Attributes(func() {
@@ -43,9 +43,9 @@ var ResultCollectionMultipleViewsDSL = func() {
 			Attribute("a")
 		})
 	})
-	Service("ResultCollectionMultipleViews", func() {
+	Service("ResultListMultipleViews", func() {
 		Method("A", func() {
-			Result(CollectionOf(RT))
+			Result(ListOf(RT))
 		})
 	})
 }
@@ -169,11 +169,11 @@ var ResultWithRecursiveResultTypeDSL = func() {
 	})
 }
 
-var ResultWithRecursiveCollectionOfResultTypeDSL = func() {
+var ResultWithRecursiveListOfResultTypeDSL = func() {
 	var SomeRT = ResultType("application/vnd.some_result", func() {
 		TypeName("SomeRT")
 		Attributes(func() {
-			Attribute("a", CollectionOf("SomeRT"))
+			Attribute("a", ListOf("SomeRT"))
 			Required("a")
 		})
 		View("default", func() {
@@ -187,11 +187,11 @@ var ResultWithRecursiveCollectionOfResultTypeDSL = func() {
 	})
 	var AnotherRT = ResultType("application/vnd.another_result", func() {
 		Attributes(func() {
-			Attribute("a", CollectionOf("application/vnd.another_result"))
+			Attribute("a", ListOf("application/vnd.another_result"))
 			Required("a")
 		})
 	})
-	Service("ResultWithRecursiveCollectionOfResultType", func() {
+	Service("ResultWithRecursiveListOfResultType", func() {
 		Method("A", func() {
 			Result(SomeRT)
 		})

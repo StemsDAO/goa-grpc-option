@@ -609,7 +609,7 @@ var GRPCEndpointWithAnyType = func() {
 	Service("Service", func() {
 		Method("Method", func() {
 			Payload(Recursive)
-			Result(CollectionOf(InvalidRT))
+			Result(ListOf(InvalidRT))
 			Error("invalid_error_type", Any)
 			Error("invalid_map_type", MapOf(Int, Any))
 			GRPC(func() {})

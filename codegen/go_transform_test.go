@@ -40,7 +40,7 @@ func TestGoTransform(t *testing.T) {
 		defaults       = root.UserType("WithDefaults")
 
 		resultType = root.UserType("ResultType")
-		rtCol      = root.UserType("ResultTypeCollection")
+		rtCol      = root.UserType("ResultTypeList")
 
 		simpleAlias    = root.UserType("SimpleAlias")
 		nestedMapAlias = root.UserType("NestedMapAlias")
@@ -106,7 +106,7 @@ func TestGoTransform(t *testing.T) {
 			{"custom-field-to-composite", customField, composite, defaultCtx, defaultCtx, srcTgtUseDefaultCustomFieldToCompositeCode},
 			{"composite-to-custom-field-pkg", composite, customField, defaultCtx, defaultCtxPkg, srcTgtUseDefaultCompositeToCustomFieldPkgCode},
 			{"result-type-to-result-type", resultType, resultType, defaultCtx, defaultCtx, srcTgtUseDefaultResultTypeToResultTypeCode},
-			{"result-type-collection-to-result-type-collection", rtCol, rtCol, defaultCtx, defaultCtx, srcTgtUseDefaultRTColToRTColCode},
+			{"result-type-list-to-result-type-list", rtCol, rtCol, defaultCtx, defaultCtx, srcTgtUseDefaultRTColToRTColCode},
 			{"defaults-to-defaults-types", defaults, defaults, defaultCtx, defaultCtx, srcTgtDefaultsToDefaultsCode},
 
 			// alias
@@ -718,11 +718,11 @@ const (
 `
 
 	srcTgtUseDefaultRTColToRTColCode = `func transform() {
-	target := &ResultTypeCollection{}
-	if source.Collection != nil {
-		target.Collection = make([]*ResultType, len(source.Collection))
-		for i, val := range source.Collection {
-			target.Collection[i] = transformResultTypeToResultType(val)
+	target := &ResultTypeList{}
+	if source.List != nil {
+		target.List = make([]*ResultType, len(source.List))
+		for i, val := range source.List {
+			target.List[i] = transformResultTypeToResultType(val)
 		}
 	}
 }

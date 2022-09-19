@@ -131,9 +131,9 @@ func Type(name string, args ...interface{}) expr.UserType {
 //        })
 //    })
 //
-// Note: CollectionOf and ArrayOf both return array types. CollectionOf returns
+// Note: ListOf and ArrayOf both return array types. ListOf returns
 // a result type where ArrayOf returns a user type. In general you want to use
-// CollectionOf if the argument is a result type and ArrayOf if it is a user
+// ListOf if the argument is a result type and ArrayOf if it is a user
 // type.
 func ArrayOf(v interface{}, fn ...func()) *expr.Array {
 	var t expr.DataType

@@ -53,8 +53,8 @@ func TestEncode(t *testing.T) {
 		{"body-user", testdata.ResultBodyUserDSL, testdata.ResultBodyUserEncodeCode},
 		{"body-union", testdata.ResultBodyUnionDSL, testdata.ResultBodyUnionEncodeCode},
 		{"body-result-multiple-views", testdata.ResultBodyMultipleViewsDSL, testdata.ResultBodyMultipleViewsEncodeCode},
-		{"body-result-collection-multiple-views", testdata.ResultBodyCollectionDSL, testdata.ResultBodyCollectionMultipleViewsEncodeCode},
-		{"body-result-collection-explicit-view", testdata.ResultBodyCollectionExplicitViewDSL, testdata.ResultBodyCollectionExplicitViewEncodeCode},
+		{"body-result-list-multiple-views", testdata.ResultBodyListDSL, testdata.ResultBodyListMultipleViewsEncodeCode},
+		{"body-result-list-explicit-view", testdata.ResultBodyListExplicitViewDSL, testdata.ResultBodyListExplicitViewEncodeCode},
 		{"empty-body-result-multiple-views", testdata.EmptyBodyResultMultipleViewsDSL, testdata.EmptyBodyResultMultipleViewsEncodeCode},
 		{"body-array-string", testdata.ResultBodyArrayStringDSL, testdata.ResultBodyArrayStringEncodeCode},
 		{"body-array-user", testdata.ResultBodyArrayUserDSL, testdata.ResultBodyArrayUserEncodeCode},
@@ -71,7 +71,7 @@ func TestEncode(t *testing.T) {
 
 		{"explicit-body-primitive-result-multiple-views", testdata.ExplicitBodyPrimitiveResultMultipleViewsDSL, testdata.ExplicitBodyPrimitiveResultMultipleViewsEncodeCode},
 		{"explicit-body-user-result-multiple-views", testdata.ExplicitBodyUserResultMultipleViewsDSL, testdata.ExplicitBodyUserResultMultipleViewsEncodeCode},
-		{"explicit-body-result-collection", testdata.ExplicitBodyResultCollectionDSL, testdata.ExplicitBodyResultCollectionEncodeCode},
+		{"explicit-body-result-list", testdata.ExplicitBodyResultListDSL, testdata.ExplicitBodyResultListEncodeCode},
 		{"explicit-content-type-result", testdata.ExplicitContentTypeResultDSL, testdata.ExplicitContentTypeResultEncodeCode},
 		{"explicit-content-type-response", testdata.ExplicitContentTypeResponseDSL, testdata.ExplicitContentTypeResponseEncodeCode},
 

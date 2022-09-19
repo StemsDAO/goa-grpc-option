@@ -347,7 +347,7 @@ func paramFor(at *expr.AttributeExpr, name, in string, required bool) *Parameter
 	}
 	if expr.IsArray(at.Type) {
 		p.Items = itemsFromExpr(expr.AsArray(at.Type).ElemType)
-		p.CollectionFormat = "multi"
+		p.ListFormat = "multi"
 	}
 	switch at.Type {
 	case expr.Int, expr.UInt, expr.UInt32, expr.UInt64:

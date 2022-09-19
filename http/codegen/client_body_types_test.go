@@ -76,7 +76,7 @@ func TestClientTypes(t *testing.T) {
 		{"multiple-methods", testdata.MultipleMethodsDSL, MultipleMethodsClientTypesFile},
 		{"payload-extend-validate", testdata.PayloadExtendedValidateDSL, PayloadExtendedValidateClientTypesFile},
 		{"result-type-validate", testdata.ResultTypeValidateDSL, ResultTypeValidateClientTypesFile},
-		{"with-result-collection", testdata.ResultWithResultCollectionDSL, WithResultCollectionClientTypesFile},
+		{"with-result-list", testdata.ResultWithResultListDSL, WithResultListClientTypesFile},
 		{"empty-error-response-body", testdata.EmptyErrorResponseBodyDSL, EmptyErrorResponseBodyClientTypesFile},
 	}
 	for _, c := range cases {
@@ -631,41 +631,41 @@ func ValidateMethodResultTypeValidateResponseBody(body *MethodResultTypeValidate
 }
 `
 
-const WithResultCollectionClientTypesFile = `// MethodResultWithResultCollectionResponseBody is the type of the
-// "ServiceResultWithResultCollection" service
-// "MethodResultWithResultCollection" endpoint HTTP response body.
-type MethodResultWithResultCollectionResponseBody struct {
+const WithResultListClientTypesFile = `// MethodResultWithResultListResponseBody is the type of the
+// "ServiceResultWithResultList" service
+// "MethodResultWithResultList" endpoint HTTP response body.
+type MethodResultWithResultListResponseBody struct {
 	A *ResulttypeResponseBody ` + "`" + `form:"a,omitempty" json:"a,omitempty" xml:"a,omitempty"` + "`" + `
 }
 
 // ResulttypeResponseBody is used to define fields on response body types.
 type ResulttypeResponseBody struct {
-	X RtCollectionResponseBody ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
+	X RtListResponseBody ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
 }
 
-// RtCollectionResponseBody is used to define fields on response body types.
-type RtCollectionResponseBody []*RtResponseBody
+// RtListResponseBody is used to define fields on response body types.
+type RtListResponseBody []*RtResponseBody
 
 // RtResponseBody is used to define fields on response body types.
 type RtResponseBody struct {
 	X *string ` + "`" + `form:"x,omitempty" json:"x,omitempty" xml:"x,omitempty"` + "`" + `
 }
 
-// NewMethodResultWithResultCollectionResultOK builds a
-// "ServiceResultWithResultCollection" service
-// "MethodResultWithResultCollection" endpoint result from a HTTP "OK" response.
-func NewMethodResultWithResultCollectionResultOK(body *MethodResultWithResultCollectionResponseBody) *serviceresultwithresultcollection.MethodResultWithResultCollectionResult {
-	v := &serviceresultwithresultcollection.MethodResultWithResultCollectionResult{}
+// NewMethodResultWithResultListResultOK builds a
+// "ServiceResultWithResultList" service
+// "MethodResultWithResultList" endpoint result from a HTTP "OK" response.
+func NewMethodResultWithResultListResultOK(body *MethodResultWithResultListResponseBody) *serviceresultwithresultlist.MethodResultWithResultListResult {
+	v := &serviceresultwithresultlist.MethodResultWithResultListResult{}
 	if body.A != nil {
-		v.A = unmarshalResulttypeResponseBodyToServiceresultwithresultcollectionResulttype(body.A)
+		v.A = unmarshalResulttypeResponseBodyToServiceresultwithresultlistResulttype(body.A)
 	}
 
 	return v
 }
 
-// ValidateMethodResultWithResultCollectionResponseBody runs the validations
-// defined on MethodResultWithResultCollectionResponseBody
-func ValidateMethodResultWithResultCollectionResponseBody(body *MethodResultWithResultCollectionResponseBody) (err error) {
+// ValidateMethodResultWithResultListResponseBody runs the validations
+// defined on MethodResultWithResultListResponseBody
+func ValidateMethodResultWithResultListResponseBody(body *MethodResultWithResultListResponseBody) (err error) {
 	if body.A != nil {
 		if err2 := ValidateResulttypeResponseBody(body.A); err2 != nil {
 			err = goa.MergeErrors(err, err2)
@@ -677,15 +677,15 @@ func ValidateMethodResultWithResultCollectionResponseBody(body *MethodResultWith
 // ValidateResulttypeResponseBody runs the validations defined on
 // ResulttypeResponseBody
 func ValidateResulttypeResponseBody(body *ResulttypeResponseBody) (err error) {
-	if err2 := ValidateRtCollectionResponseBody(body.X); err2 != nil {
+	if err2 := ValidateRtListResponseBody(body.X); err2 != nil {
 		err = goa.MergeErrors(err, err2)
 	}
 	return
 }
 
-// ValidateRtCollectionResponseBody runs the validations defined on
-// RtCollectionResponseBody
-func ValidateRtCollectionResponseBody(body RtCollectionResponseBody) (err error) {
+// ValidateRtListResponseBody runs the validations defined on
+// RtListResponseBody
+func ValidateRtListResponseBody(body RtListResponseBody) (err error) {
 	for _, e := range body {
 		if e != nil {
 			if err2 := ValidateRtResponseBody(e); err2 != nil {

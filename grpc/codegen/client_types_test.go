@@ -18,7 +18,7 @@ func TestClientTypeFiles(t *testing.T) {
 		{"payload-with-nested-types", testdata.PayloadWithNestedTypesDSL, testdata.PayloadWithNestedTypesClientTypeCode},
 		{"payload-with-duplicate-use", testdata.PayloadWithMultipleUseTypesDSL, testdata.PayloadWithMultipleUseTypesClientTypeCode},
 		{"payload-with-alias-type", testdata.PayloadWithAliasTypeDSL, testdata.PayloadWithAliasTypeClientTypeCode},
-		{"result-collection", testdata.ResultWithCollectionDSL, testdata.ResultWithCollectionClientTypeCode},
+		{"result-list", testdata.ResultWithListDSL, testdata.ResultWithListClientTypeCode},
 		{"alias-validation", testdata.ResultWithAliasValidation, testdata.ResultWithAliasValidationClientTypeCode},
 		{"with-errors", testdata.UnaryRPCWithErrorsDSL, testdata.WithErrorsClientTypeCode},
 		{"bidirectional-streaming-same-type", testdata.BidirectionalStreamingRPCSameTypeDSL, testdata.BidirectionalStreamingRPCSameTypeClientTypeCode},

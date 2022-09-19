@@ -127,7 +127,7 @@ func TestResponseEncoder(t *testing.T) {
 		{"result-primitive", testdata.UnaryRPCNoPayloadDSL, testdata.ResultPrimitiveResponseEncoderCode},
 		{"result-with-metadata", testdata.MessageWithMetadataDSL, testdata.ResultWithMetadataResponseEncoderCode},
 		{"result-with-validate", testdata.MessageWithValidateDSL, testdata.ResultWithValidateResponseEncoderCode},
-		{"result-collection", testdata.MessageResultTypeCollectionDSL, testdata.ResultCollectionResponseEncoderCode},
+		{"result-list", testdata.MessageResultTypeListDSL, testdata.ResultListResponseEncoderCode},
 	}
 	for _, c := range cases {
 		t.Run(c.Name, func(t *testing.T) {
