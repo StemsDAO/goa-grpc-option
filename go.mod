@@ -1,4 +1,4 @@
-module goa.design/goa/v3
+module github.com/StemsDAO/goa-grpc-option/v3
 
 go 1.19
 
