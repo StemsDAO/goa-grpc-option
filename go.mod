@@ -1,4 +1,4 @@
-module github.com/StemsDAO/goa-grpc-option/v3
+module goa.design/goa/v3
 
 go 1.19
 
@@ -13,7 +13,6 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sergi/go-diff v1.3.1
 	github.com/zach-klippenstein/goregen v0.0.0-20160303162051-795b5e3961ea
-	goa.design/goa/v3 v3.12.4
 	golang.org/x/text v0.12.0
 	golang.org/x/tools v0.12.0
 	google.golang.org/grpc v1.57.0
@@ -22,7 +21,6 @@ require (
 )
 
 require (
-	github.com/AnatolyRugalev/goregen v0.1.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.13 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
@@ -31,6 +29,7 @@ require (
 	github.com/invopop/yaml v0.1.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/manveru/gobdd v0.0.0-20131210092515-f1a17fdd710b // indirect
 	github.com/mohae/deepcopy v0.0.0-20170929034955-c48cc78d4826 // indirect
 	github.com/perimeterx/marshmallow v1.1.4 // indirect
 	github.com/smartystreets/goconvey v1.8.1 // indirect
