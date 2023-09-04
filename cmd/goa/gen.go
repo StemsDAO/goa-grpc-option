@@ -57,7 +57,7 @@ func NewGenerator(cmd string, path, output string) *Generator {
 		matched := false
 		pkgs, _ := packages.Load(&packages.Config{Mode: packages.NeedFiles | packages.NeedModule}, path)
 		fset := token.NewFileSet()
-		p := regexp.MustCompile(`goa.design/goa/v(\d+)/dsl`)
+		p := regexp.MustCompile(`github.com/StemsDAO/goa-grpc-option/v(\d+)/dsl`)
 		for _, pkg := range pkgs {
 			// Nil check in case packages.Load can't get module info
 			if pkg.Module != nil {
@@ -132,10 +132,10 @@ func (g *Generator) Write(debug bool) error {
 			codegen.SimpleImport("sort"),
 			codegen.SimpleImport("strconv"),
 			codegen.SimpleImport("strings"),
-			codegen.SimpleImport("goa.design/goa/" + ver + "codegen"),
-			codegen.SimpleImport("goa.design/goa/" + ver + "codegen/generator"),
-			codegen.SimpleImport("goa.design/goa/" + ver + "eval"),
-			codegen.NewImport("goa", "goa.design/goa/"+ver+"pkg"),
+			codegen.SimpleImport("github.com/StemsDAO/goa-grpc-option/" + ver + "codegen"),
+			codegen.SimpleImport("github.com/StemsDAO/goa-grpc-option/" + ver + "codegen/generator"),
+			codegen.SimpleImport("github.com/StemsDAO/goa-grpc-option/" + ver + "eval"),
+			codegen.NewImport("goa", "github.com/StemsDAO/goa-grpc-option/"+ver+"pkg"),
 			codegen.NewImport("_", g.DesignPath),
 		}
 		sections = []*codegen.SectionTemplate{

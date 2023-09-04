@@ -25,7 +25,7 @@ Below are some guidelines to follow when contributing to this project:
 guide.
 2) To get your hands dirty, fork the Goa repo and issue PRs from the fork.
 **PRO Tip:** Add a [git remote](https://git-scm.com/docs/git-remote.html) to
-your forked repo in the Goa source code (in $GOPATH/src/goa.design/goa when
+your forked repo in the Goa source code (in $GOPATH/src/github.com/StemsDAO/goa-grpc-option when
 installed using `go get`) to avoid messing with import paths while testing
 your fix.
 3) [Open issues](https://github.com/goadesign/goa/issues) labeled as `good first

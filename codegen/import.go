@@ -64,7 +64,7 @@ func GoaImport(rel string) *ImportSpec {
 
 // GoaNamedImport creates an import for a Goa package with the given name.
 func GoaNamedImport(rel, name string) *ImportSpec {
-	root := "goa.design/goa"
+	root := "github.com/StemsDAO/goa-grpc-option"
 	if DesignVersion > 2 {
 		root += "/v" + strconv.Itoa(DesignVersion)
 	}

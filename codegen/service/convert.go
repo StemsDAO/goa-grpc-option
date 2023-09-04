@@ -85,7 +85,7 @@ func commonPath(sep byte, paths ...string) string {
 
 // getPkgImport returns the correct import path of a package.
 // It's needed because the "reflect" package provides the binary import path
-// ("goa.design/goa/vendor/some/package") for vendored packages
+// ("github.com/StemsDAO/goa-grpc-option/vendor/some/package") for vendored packages
 // instead the source import path ("some/package")
 func getPkgImport(pkg, cwd string) string {
 	gopath := os.Getenv("GOPATH")

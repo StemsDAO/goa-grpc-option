@@ -64,7 +64,7 @@ func TestPkgImport(t *testing.T) {
 	if gopath == "" {
 		gopath = build.Default.GOPATH
 	}
-	cwd := gopath + "/src/goa.design/goa/codegen/service"
+	cwd := gopath + "/src/github.com/StemsDAO/goa-grpc-option/codegen/service"
 	goModCwd := "/home/user/project/goa/codegen/service"
 	cases := []struct {
 		Name           string
@@ -74,7 +74,7 @@ func TestPkgImport(t *testing.T) {
 	}{
 		{"goa-pkg", cwd, "github.com/StemsDAO/goa-grpc-option/v3/pkg", "github.com/StemsDAO/goa-grpc-option/v3/pkg"},
 		{"internal-pkg", cwd, "github.com/StemsDAO/goa-grpc-option/v3/codegen", "github.com/StemsDAO/goa-grpc-option/v3/codegen"},
-		{"vendored-pkg", cwd, "goa.design/goa/vendor/github.com/some/pkg", "github.com/some/pkg"},
+		{"vendored-pkg", cwd, "github.com/StemsDAO/goa-grpc-option/vendor/github.com/some/pkg", "github.com/some/pkg"},
 		{"external-pkg", cwd, "github.com/some/pkg", "github.com/some/pkg"},
 		{"gomod-goa-pkg", goModCwd, "github.com/StemsDAO/goa-grpc-option/v3/pkg", "github.com/StemsDAO/goa-grpc-option/v3/pkg"},
 	}

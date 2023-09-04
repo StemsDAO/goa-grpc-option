@@ -60,7 +60,7 @@ func TestService(t *testing.T) {
 			if len(expr.Root.Services) != 1 {
 				t.Fatalf("got %d services, expected 1", len(expr.Root.Services))
 			}
-			files := Files("goa.design/goa/example", expr.Root.Services[0], make(map[string][]string))
+			files := Files("github.com/StemsDAO/goa-grpc-option/example", expr.Root.Services[0], make(map[string][]string))
 			if len(files) == 0 {
 				t.Fatalf("got no file, expected one")
 			}
@@ -97,7 +97,7 @@ func TestStructPkgPath(t *testing.T) {
 			if len(expr.Root.Services) != len(c.SvcCodes) {
 				t.Fatalf("got %d services, expected %d", len(expr.Root.Services), len(c.SvcCodes))
 			}
-			files := Files("goa.design/goa/example", expr.Root.Services[0], userTypePkgs)
+			files := Files("github.com/StemsDAO/goa-grpc-option/example", expr.Root.Services[0], userTypePkgs)
 			if len(files) != len(c.TypeFiles)+1 {
 				t.Fatalf("got %d files, expected %d", len(files), len(c.TypeFiles)+1)
 			}
@@ -106,7 +106,7 @@ func TestStructPkgPath(t *testing.T) {
 				validateFile(t, files[i+1], f, c.TypeCodes[i])
 			}
 			if len(c.SvcCodes) > 1 {
-				files = Files("goa.design/goa/example", expr.Root.Services[1], userTypePkgs)
+				files = Files("github.com/StemsDAO/goa-grpc-option/example", expr.Root.Services[1], userTypePkgs)
 				if len(files) != 1 {
 					t.Fatalf("got %d files, expected 1", len(files))
 				}

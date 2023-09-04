@@ -39,7 +39,7 @@ func TestEndpoint(t *testing.T) {
 			if len(expr.Root.Services) != 1 {
 				t.Fatalf("got %d services, expected 1", len(expr.Root.Services))
 			}
-			fs := EndpointFile("goa.design/goa/example", expr.Root.Services[0])
+			fs := EndpointFile("github.com/StemsDAO/goa-grpc-option/example", expr.Root.Services[0])
 			if fs == nil {
 				t.Fatalf("got nil file, expected not nil")
 			}

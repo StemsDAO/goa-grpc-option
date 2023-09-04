@@ -253,7 +253,7 @@ The `http` directory contains OpenAPI 2.0 and 3.0 specifications in both YAML
 and JSON format.
 
 The specification can easily be served from the service itself using a file
-server. The [Files](http://godoc.org/goa.design/goa/dsl/http.go#Files) DSL
+server. The [Files](http://godoc.org/github.com/StemsDAO/goa-grpc-option/dsl/http.go#Files) DSL
 function makes it possible to serve a static file. Edit the file
 `design/design.go` and add:
 
