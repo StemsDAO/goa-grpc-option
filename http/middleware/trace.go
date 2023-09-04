@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"regexp"
 
-	"goa.design/goa/v3/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 )
 
 type (

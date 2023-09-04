@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"testing"
 
-	"goa.design/goa/v3/middleware/xray"
-	"goa.design/goa/v3/middleware/xray/xraytest"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray/xraytest"
 )
 
 const (

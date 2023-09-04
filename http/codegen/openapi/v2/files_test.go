@@ -11,12 +11,12 @@ import (
 	"testing"
 	"text/template"
 
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	httpgen "github.com/StemsDAO/goa-grpc-option/v3/http/codegen"
+	openapi "github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi"
+	openapiv2 "github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi/v2"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/testdata"
 	"github.com/getkin/kin-openapi/openapi2"
-	"goa.design/goa/v3/codegen"
-	httpgen "goa.design/goa/v3/http/codegen"
-	openapi "goa.design/goa/v3/http/codegen/openapi"
-	openapiv2 "goa.design/goa/v3/http/codegen/openapi/v2"
-	"goa.design/goa/v3/http/codegen/testdata"
 )
 
 var update = flag.Bool("update", false, "update .golden files")

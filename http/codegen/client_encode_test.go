@@ -4,9 +4,9 @@ import (
 	"strings"
 	"testing"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
-	"goa.design/goa/v3/http/codegen/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/testdata"
 )
 
 func TestClientEncode(t *testing.T) {

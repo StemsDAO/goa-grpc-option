@@ -7,8 +7,8 @@ import (
 	"strings"
 	"text/template"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Services holds the data computed from the design needed to generate the code
@@ -1352,7 +1352,7 @@ func buildViewedResultType(att, projected *expr.AttributeExpr, viewspkg string, 
 			"ReturnVar":     "vres",
 			"Views":         views,
 			"ReturnTypeRef": vresref,
-			"IsList":  isarr,
+			"IsList":        isarr,
 			"TargetType":    scope.GoFullTypeName(att, viewspkg),
 			"InitName":      "new" + viewScope.GoTypeName(projected),
 		}
@@ -1408,15 +1408,15 @@ func buildViewedResultType(att, projected *expr.AttributeExpr, viewspkg string, 
 			Ref:         resref,
 			Type:        projT,
 		},
-		FullName:     scope.GoFullTypeName(att, viewspkg),
-		FullRef:      vresref,
-		ResultInit:   resinit,
-		Init:         init,
-		Views:        views,
-		Validate:     validate,
-		IsList: isarr,
-		ViewName:     viewName,
-		ViewsPkg:     viewspkg,
+		FullName:   scope.GoFullTypeName(att, viewspkg),
+		FullRef:    vresref,
+		ResultInit: resinit,
+		Init:       init,
+		Views:      views,
+		Validate:   validate,
+		IsList:     isarr,
+		ViewName:   viewName,
+		ViewsPkg:   viewspkg,
 	}
 }
 
@@ -1617,10 +1617,10 @@ func buildValidations(projected *expr.AttributeExpr, scope *codegen.NameScope) [
 		arr := expr.AsArray(projected.Type)
 		for _, view := range rt.Views {
 			data := map[string]interface{}{
-				"Projected":    tname,
-				"ArgVar":       "result",
-				"Source":       "result",
-				"IsList": arr != nil,
+				"Projected": tname,
+				"ArgVar":    "result",
+				"Source":    "result",
+				"IsList":    arr != nil,
 			}
 			var (
 				name string
@@ -1714,10 +1714,10 @@ func buildConstructorCode(src, tgt *expr.AttributeExpr, sourceVar, targetVar str
 	arr := expr.AsArray(tgt.Type)
 
 	data := map[string]interface{}{
-		"ArgVar":       sourceVar,
-		"ReturnVar":    targetVar,
-		"IsList": arr != nil,
-		"TargetType":   targetCtx.Scope.Name(tgt, targetCtx.Pkg(tgt), targetCtx.Pointer, targetCtx.UseDefault),
+		"ArgVar":     sourceVar,
+		"ReturnVar":  targetVar,
+		"IsList":     arr != nil,
+		"TargetType": targetCtx.Scope.Name(tgt, targetCtx.Pkg(tgt), targetCtx.Pointer, targetCtx.UseDefault),
 	}
 
 	if arr != nil {

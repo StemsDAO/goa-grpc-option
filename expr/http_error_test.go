@@ -3,8 +3,8 @@ package expr_test
 import (
 	"testing"
 
-	. "goa.design/goa/v3/dsl"
-	"goa.design/goa/v3/expr"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 func TestHTTPErrorResponseValidation(t *testing.T) {

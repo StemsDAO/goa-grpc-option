@@ -2,8 +2,8 @@
 package dsl_test
 
 import (
-	. "goa.design/goa/v3/dsl"
-	. "goa.design/goa/v3/expr"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
+	. "github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // The API expression defines the global API properties of the design. There can

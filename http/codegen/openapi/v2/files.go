@@ -7,8 +7,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Files returns the OpenAPI v2 specification files in JSON and YAML formats.

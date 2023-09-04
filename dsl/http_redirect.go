@@ -1,8 +1,8 @@
 package dsl
 
 import (
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Redirect indicates that HTTP requests reply to the request with a redirect.
@@ -16,21 +16,20 @@ import (
 //
 // Example:
 //
-//    var _ = Service("service", func() {
-//        Method("method", func() {
-//            HTTP(func() {
-//                GET("/resources")
-//                Redirect("/redirect/dest", StatusMovedPermanently)
-//            })
-//        })
-//    })
+//	var _ = Service("service", func() {
+//	    Method("method", func() {
+//	        HTTP(func() {
+//	            GET("/resources")
+//	            Redirect("/redirect/dest", StatusMovedPermanently)
+//	        })
+//	    })
+//	})
 //
-//    var _ = Service("service", func() {
-//        Files("/file.json", "/path/to/file.json", func() {
-//            Redirect("/redirect/dest", StatusMovedPermanently)
-//        })
-//    })
-//
+//	var _ = Service("service", func() {
+//	    Files("/file.json", "/path/to/file.json", func() {
+//	        Redirect("/redirect/dest", StatusMovedPermanently)
+//	    })
+//	})
 func Redirect(url string, code int) {
 	redirect := &expr.HTTPRedirectExpr{
 		URL:        url,

@@ -3,7 +3,7 @@
 ## Overview
 
 [![Build Status](https://github.com/goadesign/goa/workflows/build/badge.svg?branch=v3&event=push)](https://github.com/goadesign/goa/actions?query=branch%3Av3+event%3Apush)
-[![GoDev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/goa.design/goa/v3@v3.8.5/dsl?tab=doc)
+[![GoDev](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/StemsDAO/goa-grpc-option/v3@v3.8.5/dsl?tab=doc)
 [![Go Report Card](https://goreportcard.com/badge/goadesign/goa)](https://goreportcard.com/report/goadesign/goa)
 [![Slack](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=red)](https://gophers.slack.com/messages/goa)
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/goadesign.svg?style=social&label=Follow%20%40goadesign)](https://twitter.com/goadesign)
@@ -44,7 +44,7 @@ invoking the client code.
 ## Installation
 
 ```bash
-go install goa.design/goa/v3/cmd/goa@v3
+go install github.com/StemsDAO/goa-grpc-option/v3/cmd/goa@v3
 ```
 
 >Note: Goa requires the use of Go modules.
@@ -69,7 +69,7 @@ content:
 ```go
 package design
 
-import . "goa.design/goa/v3/dsl"
+import . "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 
 // API describes the global properties of the API server.
 var _ = API("calc", func() {
@@ -315,7 +315,7 @@ In particular the page
 explains how to leverage the generated code to implement an HTTP or gRPC
 service.
 
-The [![DSL GoDoc](https://img.shields.io/badge/godoc-DSL-blue)](https://pkg.go.dev/goa.design/goa/v3@v3.8.5/dsl?tab=doc)
+The [![DSL GoDoc](https://img.shields.io/badge/godoc-DSL-blue)](https://pkg.go.dev/github.com/StemsDAO/goa-grpc-option/v3@v3.8.5/dsl?tab=doc)
 contains a fully documented reference of all the DSL functions.
 
 ### Instrumentation and System Example
@@ -355,16 +355,16 @@ contains simple examples illustrating basic concepts.
 
 Q: I'm seeing an error that says:
 
-> generated code expected `goa.design/goa/v3/codegen/generator` to be present in the vendor directory, see documentation for more details
+> generated code expected `github.com/StemsDAO/goa-grpc-option/v3/codegen/generator` to be present in the vendor directory, see documentation for more details
 
 How do I fix this?
 
 A: If you are vendoring your dependencies Goa will not attempt to satisfy its
 dependencies by retrieving them with `go get`. If you see the above error message, it
-means that the `goa.design/goa/v3/codegen/generator` package is not included in your
+means that the `github.com/StemsDAO/goa-grpc-option/v3/codegen/generator` package is not included in your
 vendor directory.
 
-To fix, ensure that `goa.design/goa/v3/codegen/generator` is being imported somewhere in your project. This can be as a bare import (e.g. `import _ "goa.design/goa/v3/codegen/generator"`)
+To fix, ensure that `github.com/StemsDAO/goa-grpc-option/v3/codegen/generator` is being imported somewhere in your project. This can be as a bare import (e.g. `import _ "github.com/StemsDAO/goa-grpc-option/v3/codegen/generator"`)
 in any file or you can use a dedicated `tools.go` file (see [Manage Go tools via Go modules](https://marcofranssen.nl/manage-go-tools-via-go-modules) and [golang/go/issues/25922](https://github.com/golang/go/issues/25922) for more details.) Finally, run `go mod vendor` to ensure
 the imported packages are properly vendored.
 

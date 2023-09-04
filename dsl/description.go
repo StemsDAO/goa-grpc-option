@@ -1,8 +1,8 @@
 package dsl
 
 import (
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Description sets the expression description.
@@ -14,10 +14,9 @@ import (
 //
 // Example:
 //
-//    API("adder", func() {
-//        Description("Adder API")
-//    })
-//
+//	API("adder", func() {
+//	    Description("Adder API")
+//	})
 func Description(d string) {
 	switch e := eval.Current().(type) {
 	case *expr.APIExpr:

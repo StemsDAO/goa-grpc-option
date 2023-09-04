@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // ClientFiles returns the generated HTTP client files.

@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Tag allows adding meta data to a single tag that is used by the Operation Object. It is

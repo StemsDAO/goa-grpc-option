@@ -4,8 +4,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	openapi "goa.design/goa/v3/http/codegen/openapi"
-	"goa.design/goa/v3/http/codegen/testdata"
+	openapi "github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/testdata"
 )
 
 func TestOpenAPI(t *testing.T) {

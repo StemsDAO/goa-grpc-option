@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // GRPCServices holds the data computed from the design needed to generate the

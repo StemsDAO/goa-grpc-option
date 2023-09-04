@@ -203,7 +203,7 @@ const ExampleCLIImport = `import (
 	cli "grpc/cli/test_api"
 	"os"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -214,7 +214,7 @@ const ExampleSingleHostCLIImport = `import (
 	cli "grpc/cli/single_host"
 	"os"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -225,7 +225,7 @@ const ExamplePkgPathCLIImport = `import (
 	cli "my/pkg/path/grpc/cli/test_api"
 	"os"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -236,7 +236,7 @@ const ExampleSingleHostPkgPathCLIImport = `import (
 	cli "my/pkg/path/grpc/cli/single_host"
 	"os"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

@@ -1,6 +1,6 @@
 package testdata
 
-import "goa.design/goa/v3/expr"
+import "github.com/StemsDAO/goa-grpc-option/v3/expr"
 
 var FinalizeEndpointBodyAsExtendedType = &expr.UserTypeExpr{
 	AttributeExpr: &expr.AttributeExpr{

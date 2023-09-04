@@ -1,8 +1,8 @@
 package dsl
 
 import (
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Method defines a single service method.
@@ -13,17 +13,16 @@ import (
 //
 // Example:
 //
-//    Method("add", func() {
-//        Description("The add method returns the sum of A and B")
-//        Docs(func() {
-//            Description("Add docs")
-//            URL("http//adder.goa.design/docs/endpoints/add")
-//        })
-//        Payload(Operands)
-//        Result(Sum)
-//        Error(ErrInvalidOperands)
-//    })
-//
+//	Method("add", func() {
+//	    Description("The add method returns the sum of A and B")
+//	    Docs(func() {
+//	        Description("Add docs")
+//	        URL("http//adder.goa.design/docs/endpoints/add")
+//	    })
+//	    Payload(Operands)
+//	    Result(Sum)
+//	    Error(ErrInvalidOperands)
+//	})
 func Method(name string, fn func()) {
 	s, ok := eval.Current().(*expr.ServiceExpr)
 	if !ok {

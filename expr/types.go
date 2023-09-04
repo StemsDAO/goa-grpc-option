@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"goa.design/goa/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 )
 
 type (
@@ -271,10 +271,10 @@ func IsAlias(dt DataType) bool {
 // Equal compares the types recursively and returns true if they are equal. Two
 // types are equal if:
 //
-//    - both types have the same kind
-//    - array types have elements whose types are equal
-//    - map types have keys and elements whose types are equal
-//    - objects have the same attribute names and the attribute types are equal
+//   - both types have the same kind
+//   - array types have elements whose types are equal
+//   - map types have keys and elements whose types are equal
+//   - objects have the same attribute names and the attribute types are equal
 //
 // Note: calling Equal is not equivalent to evaluating dt.Hash() == dt2.Hash()
 // as the former may return true for two user types with different names and
@@ -647,10 +647,9 @@ func (u *Union) Example(r *Random) interface{} {
 // array or map types. This is useful in reporting types in error messages,
 // examples of qualified type names:
 //
-//     "array<string>"
-//     "map<string, string>"
-//     "map<string, array<int32>>"
-//
+//	"array<string>"
+//	"map<string, string>"
+//	"map<string, array<int32>>"
 func QualifiedTypeName(t DataType) string {
 	switch t.Kind() {
 	case ArrayKind:

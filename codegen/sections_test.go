@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 func TestHeader(t *testing.T) {

@@ -1,6 +1,6 @@
 package dsl
 
-import "goa.design/goa/v3/expr"
+import "github.com/StemsDAO/goa-grpc-option/v3/expr"
 
 const (
 	// Boolean is the type for a JSON boolean.

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 var transformGoArrayT, transformGoMapT, transformGoUnionT, transformGoUnionToObjectT, transformGoObjectToUnionT *template.Template

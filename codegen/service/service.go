@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"sort"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // Files returns the generated files for the given service as well as a map

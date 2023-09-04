@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"goa.design/goa/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 )
 
 // SchemeKind is a type of security scheme.

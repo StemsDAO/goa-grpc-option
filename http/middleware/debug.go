@@ -12,8 +12,8 @@ import (
 	"sort"
 	"strings"
 
-	goahttp "goa.design/goa/v3/http"
-	"goa.design/goa/v3/middleware"
+	goahttp "github.com/StemsDAO/goa-grpc-option/v3/http"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 )
 
 // responseDupper tees the response to a buffer and a response writer.

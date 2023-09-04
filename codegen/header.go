@@ -1,7 +1,7 @@
 package codegen
 
 import (
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 // Header returns a Go source file header section template.

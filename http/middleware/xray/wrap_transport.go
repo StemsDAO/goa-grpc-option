@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	"goa.design/goa/v3/middleware"
-	"goa.design/goa/v3/middleware/xray"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray"
 )
 
 // xrayTransport wraps an http RoundTripper to add a tracing subsegment of the
@@ -22,10 +22,9 @@ type xrayTransport struct {
 //
 // Example of how to wrap http.Client's transport:
 //
-// httpClient := &http.Client{
-//    Transport: WrapTransport(http.DefaultTransport),
-// }
-//
+//	httpClient := &http.Client{
+//	   Transport: WrapTransport(http.DefaultTransport),
+//	}
 func WrapTransport(rt http.RoundTripper) http.RoundTripper {
 	return &xrayTransport{rt}
 }

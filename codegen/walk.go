@@ -1,6 +1,6 @@
 package codegen
 
-import "goa.design/goa/v3/expr"
+import "github.com/StemsDAO/goa-grpc-option/v3/expr"
 
 // MappedAttributeWalker is the type of functions given to WalkMappedAttr. name
 // is the name of the attribute, elem the name of the corresponding transport

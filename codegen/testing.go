@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 
 	"github.com/sergi/go-diff/diffmatchpatch"
 )

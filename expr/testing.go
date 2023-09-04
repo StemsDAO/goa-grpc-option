@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 	"github.com/sergi/go-diff/diffmatchpatch"
-	"goa.design/goa/v3/eval"
 )
 
 // RunDSL returns the DSL root resulting from running the given DSL.

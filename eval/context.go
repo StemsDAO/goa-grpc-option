@@ -35,7 +35,7 @@ func init() {
 
 // Reset resets the eval context, mostly useful for tests.
 func Reset() {
-	Context = &DSLContext{dslPackages: []string{"goa.design/goa/v3/eval"}}
+	Context = &DSLContext{dslPackages: []string{"github.com/StemsDAO/goa-grpc-option/v3/eval"}}
 }
 
 // Register appends a root expression to the current Context root expressions.

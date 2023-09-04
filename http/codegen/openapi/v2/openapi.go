@@ -3,8 +3,8 @@
 package openapiv2
 
 import (
-	"goa.design/goa/v3/expr"
-	"goa.design/goa/v3/http/codegen/openapi"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi"
 )
 
 type (

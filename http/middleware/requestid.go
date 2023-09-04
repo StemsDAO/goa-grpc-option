@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"goa.design/goa/v3/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 )
 
 // RequestID returns a middleware, which initializes the context with a unique

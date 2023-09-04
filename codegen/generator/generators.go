@@ -3,8 +3,8 @@ package generator
 import (
 	"fmt"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 )
 
 // Genfunc is the type of the functions invoked to generate code.

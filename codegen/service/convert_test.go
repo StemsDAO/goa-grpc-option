@@ -7,11 +7,11 @@ import (
 	"testing"
 	"time"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service/testdata"
-	"goa.design/goa/v3/dsl"
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/dsl"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 type (
@@ -72,11 +72,11 @@ func TestPkgImport(t *testing.T) {
 		Pkg            string
 		ExpectedImport string
 	}{
-		{"goa-pkg", cwd, "goa.design/goa/v3/pkg", "goa.design/goa/v3/pkg"},
-		{"internal-pkg", cwd, "goa.design/goa/v3/codegen", "goa.design/goa/v3/codegen"},
+		{"goa-pkg", cwd, "github.com/StemsDAO/goa-grpc-option/v3/pkg", "github.com/StemsDAO/goa-grpc-option/v3/pkg"},
+		{"internal-pkg", cwd, "github.com/StemsDAO/goa-grpc-option/v3/codegen", "github.com/StemsDAO/goa-grpc-option/v3/codegen"},
 		{"vendored-pkg", cwd, "goa.design/goa/vendor/github.com/some/pkg", "github.com/some/pkg"},
 		{"external-pkg", cwd, "github.com/some/pkg", "github.com/some/pkg"},
-		{"gomod-goa-pkg", goModCwd, "goa.design/goa/v3/pkg", "goa.design/goa/v3/pkg"},
+		{"gomod-goa-pkg", goModCwd, "github.com/StemsDAO/goa-grpc-option/v3/pkg", "github.com/StemsDAO/goa-grpc-option/v3/pkg"},
 	}
 	for _, tc := range cases {
 		t.Run(tc.Name, func(t *testing.T) {

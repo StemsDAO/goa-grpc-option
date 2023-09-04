@@ -3,7 +3,7 @@ package testdata
 import (
 	"encoding/json"
 
-	. "goa.design/goa/v3/dsl"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 )
 
 var TestTypesDSL = func() {
@@ -19,14 +19,14 @@ var TestTypesDSL = func() {
 
 		_ = Type("CustomTypes", func() {
 			Attribute("required_string", String, func() {
-				Meta("struct:field:type", "tdtypes.CustomString", "goa.design/goa/v3/codegen/testdata/tdtypes")
+				Meta("struct:field:type", "tdtypes.CustomString", "github.com/StemsDAO/goa-grpc-option/v3/codegen/testdata/tdtypes")
 			})
 			Attribute("default_bool", Boolean, func() {
-				Meta("struct:field:type", "tdtypes.CustomBool", "goa.design/goa/v3/codegen/testdata/tdtypes")
+				Meta("struct:field:type", "tdtypes.CustomBool", "github.com/StemsDAO/goa-grpc-option/v3/codegen/testdata/tdtypes")
 				Default(true)
 			})
 			Attribute("integer", Int, func() {
-				Meta("struct:field:type", "tdtypes.CustomInt", "goa.design/goa/v3/codegen/testdata/tdtypes")
+				Meta("struct:field:type", "tdtypes.CustomInt", "github.com/StemsDAO/goa-grpc-option/v3/codegen/testdata/tdtypes")
 			})
 			Required("required_string")
 		})

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"goa.design/goa/v3/eval"
-	goa "goa.design/goa/v3/pkg"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 // Root is the root object built by the DSL.
@@ -135,10 +135,10 @@ func (r *RootExpr) DependsOn() []eval.Root { return nil }
 // Packages returns the Go import path to this and the dsl packages.
 func (r *RootExpr) Packages() []string {
 	return []string{
-		"goa.design/goa/v3/expr",
-		"goa.design/goa/v3/dsl",
-		fmt.Sprintf("goa.design/goa/v3@%s/expr", goa.Version()),
-		fmt.Sprintf("goa.design/goa/v3@%s/dsl", goa.Version()),
+		"github.com/StemsDAO/goa-grpc-option/v3/expr",
+		"github.com/StemsDAO/goa-grpc-option/v3/dsl",
+		fmt.Sprintf("github.com/StemsDAO/goa-grpc-option/v3@%s/expr", goa.Version()),
+		fmt.Sprintf("github.com/StemsDAO/goa-grpc-option/v3@%s/dsl", goa.Version()),
 	}
 }
 

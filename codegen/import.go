@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"goa.design/goa/v3/expr"
-	goa "goa.design/goa/v3/pkg"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 // DesignVersion contains the major component of the version of Goa used to

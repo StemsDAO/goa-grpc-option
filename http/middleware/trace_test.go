@@ -7,8 +7,8 @@ import (
 	"regexp"
 	"testing"
 
-	httpm "goa.design/goa/v3/http/middleware"
-	"goa.design/goa/v3/middleware"
+	httpm "github.com/StemsDAO/goa-grpc-option/v3/http/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 )
 
 type (

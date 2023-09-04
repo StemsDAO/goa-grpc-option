@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"goa.design/goa/v3/expr"
-	"goa.design/goa/v3/http/codegen/openapi"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi"
 )
 
 // OpenAPIVersion is the OpenAPI specification version targeted by this package.

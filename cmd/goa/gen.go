@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"strings"
 
-	"goa.design/goa/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
 	"golang.org/x/tools/go/packages"
 )
 
@@ -174,8 +174,8 @@ func (g *Generator) Compile() error {
 
 	// If we're in vendor context we check the error string to see if it's an issue of unsatisfied dependencies
 	if err != nil && g.hasVendorDirectory {
-		if strings.Contains(err.Error(), "cannot find package") && strings.Contains(err.Error(), "/goa.design/goa/v3/codegen/generator") {
-			return errors.New("generated code expected `goa.design/goa/v3/codegen/generator` to be present in the vendor directory, see documentation for more details")
+		if strings.Contains(err.Error(), "cannot find package") && strings.Contains(err.Error(), "/github.com/StemsDAO/goa-grpc-option/v3/codegen/generator") {
+			return errors.New("generated code expected `github.com/StemsDAO/goa-grpc-option/v3/codegen/generator` to be present in the vendor directory, see documentation for more details")
 		}
 	}
 

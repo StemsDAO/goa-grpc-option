@@ -7,7 +7,7 @@ import (
 	"strings"
 	"text/template"
 
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 var (
@@ -58,7 +58,6 @@ func init() {
 // target is the variable name against which the validation code is generated
 //
 // context is used to produce helpful messages in case of error.
-//
 func ValidationCode(att *expr.AttributeExpr, attCtx *AttributeContext, req, alias bool, target, context string) string {
 	validation := att.Validation
 	ut, isut := att.Type.(expr.UserType)
@@ -194,7 +193,6 @@ func ValidationCode(att *expr.AttributeExpr, attCtx *AttributeContext, req, alia
 //
 // attCtx is the Attributor for the given attribute which is used to generate
 // attribute name and reference in the validation code.
-//
 func RecursiveValidationCode(att *expr.AttributeExpr, attCtx *AttributeContext, req, alias bool, target string) string {
 	seen := make(map[string]*bytes.Buffer)
 	return recurseValidationCode(att, attCtx, req, alias, target, target, seen).String()

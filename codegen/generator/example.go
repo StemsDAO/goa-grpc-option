@@ -1,13 +1,13 @@
 package generator
 
 import (
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/example"
-	"goa.design/goa/v3/codegen/service"
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
-	grpccodegen "goa.design/goa/v3/grpc/codegen"
-	httpcodegen "goa.design/goa/v3/http/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/example"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	grpccodegen "github.com/StemsDAO/goa-grpc-option/v3/grpc/codegen"
+	httpcodegen "github.com/StemsDAO/goa-grpc-option/v3/http/codegen"
 )
 
 // Example iterates through the roots and returns files that implement an

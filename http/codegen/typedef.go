@@ -4,19 +4,19 @@ import (
 	"fmt"
 	"strings"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // goTypeDef returns the Go code that defines the struct corresponding to ma.
 // It differs from the function defined in the codegen package in the following
 // ways:
 //
-//    - It defines marshaler tags on each fields using the HTTP element names.
+//   - It defines marshaler tags on each fields using the HTTP element names.
 //
-//    - It produced fields with pointers even if the corresponding attribute is
-//      required when ptr is true so that the generated code may validate
-//      explicitly.
+//   - It produced fields with pointers even if the corresponding attribute is
+//     required when ptr is true so that the generated code may validate
+//     explicitly.
 //
 // useDefault directs whether fields holding primitive types with default values
 // should hold pointers when ptr is false. If it is true then the fields are

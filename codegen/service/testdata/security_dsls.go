@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	. "goa.design/goa/v3/dsl"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 )
 
 var BasicAuth = BasicAuthSecurity("basic", func() {

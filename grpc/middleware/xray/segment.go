@@ -4,8 +4,8 @@ import (
 	"context"
 	"net"
 
-	"goa.design/goa/v3/grpc/middleware"
-	"goa.design/goa/v3/middleware/xray"
+	"github.com/StemsDAO/goa-grpc-option/v3/grpc/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"

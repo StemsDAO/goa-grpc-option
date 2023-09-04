@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service/testdata"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 func TestService(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"goa.design/goa/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 )
 
 // uriVariableRegex is the regular expression used to capture variables in URI

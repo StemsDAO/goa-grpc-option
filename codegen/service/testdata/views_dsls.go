@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	. "goa.design/goa/v3/dsl"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 )
 
 var ResultWithMultipleViewsDSL = func() {
@@ -219,7 +219,7 @@ var ResultWithMultipleMethodsDSL = func() {
 }
 
 var ResultWithEnumTypeDSL = func() {
-	var T = Type("UserType", String, func()  {
+	var T = Type("UserType", String, func() {
 		Enum("a", "b")
 	})
 	var RT = ResultType("application/vnd.result", func() {

@@ -3,8 +3,8 @@ package codegen
 import (
 	"testing"
 
-	"goa.design/goa/v3/codegen/testdata"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 func TestGoTransformHelpers(t *testing.T) {
@@ -20,7 +20,7 @@ func TestGoTransformHelpers(t *testing.T) {
 		simpleAlias   = root.UserType("SimpleAlias")
 		mapAlias      = root.UserType("NestedMapAlias")
 		arrayMapAlias = root.UserType("ArrayMapAlias")
-		list    = root.UserType("ResultTypeList")
+		list          = root.UserType("ResultTypeList")
 		// attribute contexts used in test cases
 		defaultCtx = NewAttributeContext(false, false, true, "", scope)
 	)

@@ -5,8 +5,8 @@ import (
 	"path"
 	"strings"
 
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 	"github.com/dimfeld/httppath"
-	"goa.design/goa/v3/eval"
 )
 
 type (

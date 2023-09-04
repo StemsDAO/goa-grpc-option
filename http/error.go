@@ -3,7 +3,7 @@ package http
 import (
 	"net/http"
 
-	goa "goa.design/goa/v3/pkg"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 type (

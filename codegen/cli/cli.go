@@ -11,9 +11,9 @@ import (
 	"strconv"
 	"strings"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 type (
@@ -308,7 +308,6 @@ func PayloadBuilderSection(buildFunction *BuildFunctionData) *codegen.SectionTem
 // description is the flag description
 // required determines if the flag is required
 // example is an example value for the flag
-//
 func NewFlagData(svcn, en, name, typeName, description string, required bool, example, def interface{}) *FlagData {
 	ex := jsonExample(example)
 	fn := goifyTerms(svcn, en, name)

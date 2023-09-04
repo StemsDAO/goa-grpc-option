@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 
-	"goa.design/goa/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
 )
 
 type (

@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
-	goa "goa.design/goa/v3/pkg"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	goa "github.com/StemsDAO/goa-grpc-option/v3/pkg"
 )
 
 const (

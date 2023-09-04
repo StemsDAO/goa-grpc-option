@@ -1,6 +1,6 @@
 package testdata
 
-import . "goa.design/goa/v3/dsl"
+import . "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 
 var NoServerDSL = func() {
 	Service("Service", func() {

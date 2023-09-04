@@ -4,11 +4,11 @@ import (
 	"bytes"
 	"testing"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/example"
-	ctestdata "goa.design/goa/v3/codegen/example/testdata"
-	"goa.design/goa/v3/expr"
-	"goa.design/goa/v3/grpc/codegen/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/example"
+	ctestdata "github.com/StemsDAO/goa-grpc-option/v3/codegen/example/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/grpc/codegen/testdata"
 )
 
 func TestExampleCLIFiles(t *testing.T) {

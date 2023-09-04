@@ -1,6 +1,6 @@
 package expr
 
-import "goa.design/goa/v3/eval"
+import "github.com/StemsDAO/goa-grpc-option/v3/eval"
 
 type (
 	// GeneratedRoot records the generated result types and is a DSL root
@@ -35,7 +35,7 @@ func (r *GeneratedRoot) DependsOn() []eval.Root {
 // Packages returns the Go import path to this and the dsl packages.
 func (r *GeneratedRoot) Packages() []string {
 	return []string{
-		"goa.design/goa/v3/expr",
-		"goa.design/goa/v3/dsl",
+		"github.com/StemsDAO/goa-grpc-option/v3/expr",
+		"github.com/StemsDAO/goa-grpc-option/v3/dsl",
 	}
 }

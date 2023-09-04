@@ -1,6 +1,6 @@
 package dsls
 
-import . "goa.design/goa/v3/dsl"
+import . "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 
 func StringBodyDSL(svcName, metName string) func() {
 	return func() {

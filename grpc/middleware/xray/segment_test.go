@@ -6,8 +6,8 @@ import (
 	"sync"
 	"testing"
 
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray"
 	"github.com/pkg/errors"
-	"goa.design/goa/v3/middleware/xray"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/peer"

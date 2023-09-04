@@ -1,9 +1,9 @@
 package testdata
 
 import (
-	aliasd "goa.design/goa/v3/codegen/service/testdata/alias-external"
-	"goa.design/goa/v3/codegen/service/testdata/external"
-	. "goa.design/goa/v3/dsl"
+	aliasd "github.com/StemsDAO/goa-grpc-option/v3/codegen/service/testdata/alias-external"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service/testdata/external"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
 )
 
 var CreateStringDSL = func() {

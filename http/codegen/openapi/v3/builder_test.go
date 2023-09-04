@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
-	"goa.design/goa/v3/http/codegen/openapi"
-	"goa.design/goa/v3/http/codegen/openapi/v3/testdata/dsls"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi"
+	"github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi/v3/testdata/dsls"
 )
 
 func TestBuildInfo(t *testing.T) {

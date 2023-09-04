@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	grpcm "goa.design/goa/v3/grpc/middleware"
-	"goa.design/goa/v3/middleware"
-	"goa.design/goa/v3/middleware/xray"
+	grpcm "github.com/StemsDAO/goa-grpc-option/v3/grpc/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware/xray"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )
@@ -39,16 +39,16 @@ type xrayStreamClientWrapper struct {
 // the Close method once the request completes. The middleware takes care of
 // closing the top level segment. Typical usage:
 //
-//     if s := ctx.Value(SegKey); s != nil {
-//       segment := s.(*xray.Segment)
-//     }
-//     sub := segment.NewSubsegment("external-service")
-//     defer sub.Close()
-//     err := client.MakeRequest()
-//     if err != nil {
-//         sub.Error = xray.Wrap(err)
-//     }
-//     return
+//	if s := ctx.Value(SegKey); s != nil {
+//	  segment := s.(*xray.Segment)
+//	}
+//	sub := segment.NewSubsegment("external-service")
+//	defer sub.Close()
+//	err := client.MakeRequest()
+//	if err != nil {
+//	    sub.Error = xray.Wrap(err)
+//	}
+//	return
 //
 // An X-Ray trace is limited to 500 KB of segment data (JSON) being submitted
 // for it. See: https://aws.amazon.com/xray/pricing/

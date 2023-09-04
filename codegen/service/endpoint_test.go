@@ -6,9 +6,9 @@ import (
 	"go/format"
 	"testing"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/service/testdata"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/service/testdata"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 func TestEndpoint(t *testing.T) {

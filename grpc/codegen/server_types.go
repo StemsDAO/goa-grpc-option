@@ -4,15 +4,15 @@ import (
 	"path"
 	"path/filepath"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // ServerTypeFiles returns the types file for every gRPC service that contain
 // constructors to transform:
 //
-//   * protocol buffer request message types into service payload types
-//   * service result types into protocol buffer response message types
+//   - protocol buffer request message types into service payload types
+//   - service result types into protocol buffer response message types
 func ServerTypeFiles(genpkg string, root *expr.RootExpr) []*codegen.File {
 	fw := make([]*codegen.File, len(root.API.GRPC.Services))
 	seen := make(map[string]struct{})

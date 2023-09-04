@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"testing"
 
-	grpcm "goa.design/goa/v3/grpc/middleware"
-	"goa.design/goa/v3/middleware"
+	grpcm "github.com/StemsDAO/goa-grpc-option/v3/grpc/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 )

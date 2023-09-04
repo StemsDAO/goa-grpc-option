@@ -3,9 +3,9 @@ package dsl_test
 import (
 	"testing"
 
-	. "goa.design/goa/v3/dsl"
-	"goa.design/goa/v3/eval"
-	"goa.design/goa/v3/expr"
+	. "github.com/StemsDAO/goa-grpc-option/v3/dsl"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 func TestMethod(t *testing.T) {

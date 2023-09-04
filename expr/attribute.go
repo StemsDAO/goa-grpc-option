@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"goa.design/goa/v3/eval"
+	"github.com/StemsDAO/goa-grpc-option/v3/eval"
 )
 
 type (
@@ -399,12 +399,11 @@ func (a *AttributeExpr) IsRequiredNoDefault(attName string) bool {
 // between request types where attributes with default values should not be
 // generated using a pointer value and response types where they should.
 //
-//    DefaultValue UseDefault Pointer (assuming all other conditions are true)
-//    Yes          True       False
-//    Yes          False      True
-//    No           True       True
-//    No           False      True
-//
+//	DefaultValue UseDefault Pointer (assuming all other conditions are true)
+//	Yes          True       False
+//	Yes          False      True
+//	No           True       True
+//	No           False      True
 func (a *AttributeExpr) IsPrimitivePointer(attName string, useDefault bool) bool {
 	o := AsObject(a.Type)
 	if o == nil {

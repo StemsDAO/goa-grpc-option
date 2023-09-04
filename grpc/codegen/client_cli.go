@@ -4,9 +4,9 @@ import (
 	"path"
 	"path/filepath"
 
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/codegen/cli"
-	"goa.design/goa/v3/expr"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen/cli"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
 )
 
 // ClientCLIFiles returns the CLI files to generate a command-line client that

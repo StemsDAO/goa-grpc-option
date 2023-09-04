@@ -1,10 +1,10 @@
 package codegen
 
 import (
-	"goa.design/goa/v3/codegen"
-	"goa.design/goa/v3/expr"
-	openapiv2 "goa.design/goa/v3/http/codegen/openapi/v2"
-	openapiv3 "goa.design/goa/v3/http/codegen/openapi/v3"
+	"github.com/StemsDAO/goa-grpc-option/v3/codegen"
+	"github.com/StemsDAO/goa-grpc-option/v3/expr"
+	openapiv2 "github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi/v2"
+	openapiv3 "github.com/StemsDAO/goa-grpc-option/v3/http/codegen/openapi/v3"
 )
 
 // OpenAPIFiles returns the files for the OpenAPIFile spec of the given HTTP API.

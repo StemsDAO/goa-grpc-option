@@ -7,7 +7,7 @@ import (
 	"io"
 	"time"
 
-	"goa.design/goa/v3/middleware"
+	"github.com/StemsDAO/goa-grpc-option/v3/middleware"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
