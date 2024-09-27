@@ -1,6 +1,6 @@
 module github.com/StemsDAO/goa-grpc-option/v3
 
-go 1.21
+go 1.23
 
 require (
 	github.com/dimfeld/httppath v0.0.0-20170720192232-ee938bf73598
